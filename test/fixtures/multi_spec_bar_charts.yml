@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  MultiSpecSample_id: 1
+  barchart_png_filespec: 
+  bar: MyString
+  chart_png_image: 
+
+two:
+  MultiSpecSample_id: 1
+  barchart_png_filespec: 
+  bar: MyString
+  chart_png_image: 

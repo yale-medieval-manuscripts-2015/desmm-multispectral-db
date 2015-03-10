@@ -1,0 +1,33 @@
+<%= form_for(@multi_spec_bar_chart) do |f| %>
+  <% if @multi_spec_bar_chart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@multi_spec_bar_chart.errors.count, "error") %> prohibited this multi_spec_bar_chart from being saved:</h2>
+
+      <ul>
+      <% @multi_spec_bar_chart.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :MultiSpecSample_id %><br>
+    <%= f.number_field :MultiSpecSample_id %>
+  </div>
+  <div class="field">
+    <%= f.label :barchart_png_filespec %><br>
+    <%= f.text_field :barchart_png_filespec %>
+  </div>
+  <div class="field">
+    <%= f.label :bar %><br>
+    <%= f.text_field :bar %>
+  </div>
+  <div class="field">
+    <%= f.label :chart_png_image %><br>
+    <%= f.text_field :chart_png_image %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

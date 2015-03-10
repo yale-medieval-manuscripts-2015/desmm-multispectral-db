@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  resources :multi_spectral_profiles
+
+  resources :activities
+
+  resources :multi_spec_tags
+
+  resources :multi_spec_bar_charts
+
+  resources :multi_spec_values
+
+  resources :multi_spec_samples
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

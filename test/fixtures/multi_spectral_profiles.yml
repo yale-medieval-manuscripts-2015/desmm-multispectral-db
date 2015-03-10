@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  profileId: 1
+  NumBands: 1
+  BandRanges: MyString
+  notes: MyText
+
+two:
+  profileId: 1
+  NumBands: 1
+  BandRanges: MyString
+  notes: MyText

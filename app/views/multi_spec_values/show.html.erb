@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Multispecsample:</strong>
+  <%= @multi_spec_value.MultiSpecSample_id %>
+</p>
+
+<p>
+  <strong>Range:</strong>
+  <%= @multi_spec_value.range %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @multi_spec_value.value %>
+</p>
+
+<%= link_to 'Edit', edit_multi_spec_value_path(@multi_spec_value) %> |
+<%= link_to 'Back', multi_spec_values_path %>

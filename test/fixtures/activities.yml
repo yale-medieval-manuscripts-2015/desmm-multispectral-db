@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  MultiSpecSample_id: MyString
+  : 1
+  Status: MyString
+  UploadedOn: 2015-03-09 21:04:09
+  UploadedBy: MyString
+
+two:
+  MultiSpecSample_id: MyString
+  : 1
+  Status: MyString
+  UploadedOn: 2015-03-09 21:04:09
+  UploadedBy: MyString

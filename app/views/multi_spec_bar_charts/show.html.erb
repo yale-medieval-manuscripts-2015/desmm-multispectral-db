@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Multispecsample:</strong>
+  <%= @multi_spec_bar_chart.MultiSpecSample_id %>
+</p>
+
+<p>
+  <strong>Barchart png filespec:</strong>
+  <%= @multi_spec_bar_chart.barchart_png_filespec %>
+</p>
+
+<p>
+  <strong>Bar:</strong>
+  <%= @multi_spec_bar_chart.bar %>
+</p>
+
+<p>
+  <strong>Chart png image:</strong>
+  <%= @multi_spec_bar_chart.chart_png_image %>
+</p>
+
+<%= link_to 'Edit', edit_multi_spec_bar_chart_path(@multi_spec_bar_chart) %> |
+<%= link_to 'Back', multi_spec_bar_charts_path %>

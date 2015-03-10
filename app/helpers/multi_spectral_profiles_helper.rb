@@ -1,0 +1,2 @@
+module MultiSpectralProfilesHelper
+end

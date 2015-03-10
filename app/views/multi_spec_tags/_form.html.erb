@@ -1,0 +1,41 @@
+<%= form_for(@multi_spec_tag) do |f| %>
+  <% if @multi_spec_tag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@multi_spec_tag.errors.count, "error") %> prohibited this multi_spec_tag from being saved:</h2>
+
+      <ul>
+      <% @multi_spec_tag.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :MultiSpecSample_id %><br>
+    <%= f.text_field :MultiSpecSample_id %>
+  </div>
+  <div class="field">
+    <%= f.label : %><br>
+    <%= f.number_field : %>
+  </div>
+  <div class="field">
+    <%= f.label :Tag %><br>
+    <%= f.text_field :Tag %>
+  </div>
+  <div class="field">
+    <%= f.label : %><br>
+    <%= f.text_field : %>
+  </div>
+  <div class="field">
+    <%= f.label :TagValue %><br>
+    <%= f.text_field :TagValue %>
+  </div>
+  <div class="field">
+    <%= f.label : %><br>
+    <%= f.text_field : %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

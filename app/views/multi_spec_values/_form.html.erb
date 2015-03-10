@@ -1,0 +1,29 @@
+<%= form_for(@multi_spec_value) do |f| %>
+  <% if @multi_spec_value.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@multi_spec_value.errors.count, "error") %> prohibited this multi_spec_value from being saved:</h2>
+
+      <ul>
+      <% @multi_spec_value.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :MultiSpecSample_id %><br>
+    <%= f.number_field :MultiSpecSample_id %>
+  </div>
+  <div class="field">
+    <%= f.label :range %><br>
+    <%= f.number_field :range %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br>
+    <%= f.number_field :value %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Profileid:</strong>
+  <%= @multi_spectral_profile.profileId %>
+</p>
+
+<p>
+  <strong>Numbands:</strong>
+  <%= @multi_spectral_profile.NumBands %>
+</p>
+
+<p>
+  <strong>Bandranges:</strong>
+  <%= @multi_spectral_profile.BandRanges %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @multi_spectral_profile.notes %>
+</p>
+
+<%= link_to 'Edit', edit_multi_spectral_profile_path(@multi_spectral_profile) %> |
+<%= link_to 'Back', multi_spectral_profiles_path %>

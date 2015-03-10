@@ -1,0 +1,33 @@
+<%= form_for(@multi_spectral_profile) do |f| %>
+  <% if @multi_spectral_profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@multi_spectral_profile.errors.count, "error") %> prohibited this multi_spectral_profile from being saved:</h2>
+
+      <ul>
+      <% @multi_spectral_profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :profileId %><br>
+    <%= f.number_field :profileId %>
+  </div>
+  <div class="field">
+    <%= f.label :NumBands %><br>
+    <%= f.number_field :NumBands %>
+  </div>
+  <div class="field">
+    <%= f.label :BandRanges %><br>
+    <%= f.text_field :BandRanges %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
