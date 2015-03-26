@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Multi Spec Samples</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Multi spec sample</th>
+      <th>Manifest</th>
+      <th>Canvas</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Creatingapplication</th>
+      <th>Comment</th>
+      <th>Exrfilename</th>
+      <th>User</th>
+      <th>Profileid</th>
+      <th>Upload status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @multi_spec_samples.each do |multi_spec_sample| %>
+      <tr>
+        <td><%= multi_spec_sample.multi_spec_sample_id %></td>
+        <td><%= multi_spec_sample.manifest %></td>
+        <td><%= multi_spec_sample.canvas %></td>
+        <td><%= multi_spec_sample.x %></td>
+        <td><%= multi_spec_sample.y %></td>
+        <td><%= multi_spec_sample.creatingApplication %></td>
+        <td><%= multi_spec_sample.comment %></td>
+        <td><%= multi_spec_sample.exrFileName %></td>
+        <td><%= multi_spec_sample.user %></td>
+        <td><%= multi_spec_sample.profileID %></td>
+        <td><%= multi_spec_sample.upload_status %></td>
+        <td><%= link_to 'Show', multi_spec_sample %></td>
+        <td><%= link_to 'Edit', edit_multi_spec_sample_path(multi_spec_sample) %></td>
+        <td><%= link_to 'Destroy', multi_spec_sample, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Multi spec sample', new_multi_spec_sample_path %>

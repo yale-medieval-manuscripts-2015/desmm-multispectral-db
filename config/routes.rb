@@ -1,21 +1,32 @@
 Rails.application.routes.draw do
-  resources :multi_spectral_profiles
-
-  resources :activities
-
-  resources :multi_spec_tags
-
-  resources :multi_spec_bar_charts
 
   resources :multi_spec_values
-
+  resources :multi_spec_tags
+  resources :multi_spec_bar_charts
   resources :multi_spec_samples
+  resources :multi_spectral_profiles
+  resources :multispec, only: [:create]
+
+  #root 'multi_spec_samples#index'
+  root 'multi_spec_samples#upload_samples'
+  post 'multi_spec_samples/upload-target' => 'multi_spec_samples#upload_target'
+  post 'multi_spec_samples/:ms_json' => 'multi_spec_samples#createFromJson'
+
+
+  #root :to => 'multi_spec_samples#index'
+
+  #post 'multi_spec_samples/file_upload' => 'multi_spec_samples#file_upload'
+  # get 'upload/exr/:id' => 'upload#receive_exr_file'
+
+  #get 'multispec/createFromJson" => multispec#createFromJson'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+
+
+  #root 'multispec#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

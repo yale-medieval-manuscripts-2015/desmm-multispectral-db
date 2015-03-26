@@ -12,4 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ * #require dropzone.css
+ *= require dropzone/dropzone
+ *= require bootstrap.min
  */

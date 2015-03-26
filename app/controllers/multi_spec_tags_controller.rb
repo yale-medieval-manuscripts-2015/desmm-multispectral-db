@@ -69,6 +69,6 @@ class MultiSpecTagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def multi_spec_tag_params
-      params.require(:multi_spec_tag).permit(:MultiSpecSample_id, :, :Tag, :, :TagValue, :)
+      params.require(:multi_spec_tag).permit(:multi_spec_sample_id, :Tag, :TagValue, :upload_status)
     end
 end

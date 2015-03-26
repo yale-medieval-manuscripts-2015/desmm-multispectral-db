@@ -69,6 +69,6 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:MultiSpecSample_id, :, :Status, :UploadedOn, :UploadedBy)
+      params.require(:activity).permit(:MultiSpecSample_id, :Status, :UploadedOn, :UploadedBy)
     end
 end

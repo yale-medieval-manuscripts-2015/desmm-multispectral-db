@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Multispecsample:</strong>
-  <%= @multi_spec_tag.MultiSpecSample_id %>
-</p>
-
-<p>
-  <strong>:</strong>
-  <%= @multi_spec_tag. %>
+  <strong>Multi spec sample:</strong>
+  <%= @multi_spec_tag.multi_spec_sample_id %>
 </p>
 
 <p>
@@ -16,18 +11,13 @@
 </p>
 
 <p>
-  <strong>:</strong>
-  <%= @multi_spec_tag. %>
-</p>
-
-<p>
   <strong>Tagvalue:</strong>
   <%= @multi_spec_tag.TagValue %>
 </p>
 
 <p>
-  <strong>:</strong>
-  <%= @multi_spec_tag. %>
+  <strong>Upload status:</strong>
+  <%= @multi_spec_tag.upload_status %>
 </p>
 
 <%= link_to 'Edit', edit_multi_spec_tag_path(@multi_spec_tag) %> |

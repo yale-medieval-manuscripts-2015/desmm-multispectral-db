@@ -69,6 +69,6 @@ class MultiSpecBarChartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def multi_spec_bar_chart_params
-      params.require(:multi_spec_bar_chart).permit(:MultiSpecSample_id, :barchart_png_filespec, :bar, :chart_png_image)
+      params.require(:multi_spec_bar_chart).permit(:multi_spec_sample_id, :barchart_png_filename, :bar, :chart_png_image, :upload_status)
     end
 end

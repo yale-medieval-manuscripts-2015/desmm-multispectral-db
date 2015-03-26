@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :MultiSpecSample_id %><br>
-    <%= f.number_field :MultiSpecSample_id %>
+    <%= f.label :multi_spec_sample_id %><br>
+    <%= f.text_field :multi_spec_sample_id %>
   </div>
   <div class="field">
-    <%= f.label :barchart_png_filespec %><br>
-    <%= f.text_field :barchart_png_filespec %>
+    <%= f.label :barchart_png_filename %><br>
+    <%= f.text_field :barchart_png_filename %>
   </div>
   <div class="field">
     <%= f.label :bar %><br>
@@ -26,6 +26,10 @@
   <div class="field">
     <%= f.label :chart_png_image %><br>
     <%= f.text_field :chart_png_image %>
+  </div>
+  <div class="field">
+    <%= f.label :upload_status %><br>
+    <%= f.text_field :upload_status %>
   </div>
   <div class="actions">
     <%= f.submit %>

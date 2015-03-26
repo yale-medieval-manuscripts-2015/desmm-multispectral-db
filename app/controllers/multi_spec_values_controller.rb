@@ -69,6 +69,6 @@ class MultiSpecValuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def multi_spec_value_params
-      params.require(:multi_spec_value).permit(:MultiSpecSample_id, :range, :value)
+      params.require(:multi_spec_value).permit(:multi_spec_sample_id, :wavelength, :range, :value, :reflectance, :normalized, :upload_status)
     end
 end

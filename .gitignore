@@ -14,3 +14,13 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+.idea
+.idea/*
+/.idea/*
+*.iml
+.DS_Store
+.env
+.rvmrc
+.ruby-gemset
+.ruby-version

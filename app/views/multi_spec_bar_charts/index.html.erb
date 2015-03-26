@@ -5,10 +5,11 @@
 <table>
   <thead>
     <tr>
-      <th>Multispecsample</th>
-      <th>Barchart png filespec</th>
+      <th>Multi spec sample</th>
+      <th>Barchart png filename</th>
       <th>Bar</th>
       <th>Chart png image</th>
+      <th>Upload status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +17,11 @@
   <tbody>
     <% @multi_spec_bar_charts.each do |multi_spec_bar_chart| %>
       <tr>
-        <td><%= multi_spec_bar_chart.MultiSpecSample_id %></td>
-        <td><%= multi_spec_bar_chart.barchart_png_filespec %></td>
+        <td><%= multi_spec_bar_chart.multi_spec_sample_id %></td>
+        <td><%= multi_spec_bar_chart.barchart_png_filename %></td>
         <td><%= multi_spec_bar_chart.bar %></td>
         <td><%= multi_spec_bar_chart.chart_png_image %></td>
+        <td><%= multi_spec_bar_chart.upload_status %></td>
         <td><%= link_to 'Show', multi_spec_bar_chart %></td>
         <td><%= link_to 'Edit', edit_multi_spec_bar_chart_path(multi_spec_bar_chart) %></td>
         <td><%= link_to 'Destroy', multi_spec_bar_chart, method: :delete, data: { confirm: 'Are you sure?' } %></td>

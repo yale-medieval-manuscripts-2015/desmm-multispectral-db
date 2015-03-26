@@ -5,9 +5,13 @@
 <table>
   <thead>
     <tr>
-      <th>Multispecsample</th>
+      <th>Multi spec sample</th>
+      <th>Wavelength</th>
       <th>Range</th>
       <th>Value</th>
+      <th>Reflectance</th>
+      <th>Normalized</th>
+      <th>Upload status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +19,13 @@
   <tbody>
     <% @multi_spec_values.each do |multi_spec_value| %>
       <tr>
-        <td><%= multi_spec_value.MultiSpecSample_id %></td>
+        <td><%= multi_spec_value.multi_spec_sample_id %></td>
+        <td><%= multi_spec_value.wavelength %></td>
         <td><%= multi_spec_value.range %></td>
         <td><%= multi_spec_value.value %></td>
+        <td><%= multi_spec_value.reflectance %></td>
+        <td><%= multi_spec_value.normalized %></td>
+        <td><%= multi_spec_value.upload_status %></td>
         <td><%= link_to 'Show', multi_spec_value %></td>
         <td><%= link_to 'Edit', edit_multi_spec_value_path(multi_spec_value) %></td>
         <td><%= link_to 'Destroy', multi_spec_value, method: :delete, data: { confirm: 'Are you sure?' } %></td>

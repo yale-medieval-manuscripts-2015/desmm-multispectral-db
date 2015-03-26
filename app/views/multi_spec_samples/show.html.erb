@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Multispecsample:</strong>
-  <%= @multi_spec_sample.MultiSpecSample_id %>
-</p>
-
-<p>
-  <strong>Manifest:</strong>
-  <%= @multi_spec_sample.manifest %>
+  <strong>Multi spec sample:</strong>
+  <%= @multi_spec_sample.multi_spec_sample_id %>
 </p>
 
 <p>
@@ -31,26 +26,6 @@
 </p>
 
 <p>
-  <strong>Wavelength:</strong>
-  <%= @multi_spec_sample.wavelength %>
-</p>
-
-<p>
-  <strong>Reflectance:</strong>
-  <%= @multi_spec_sample.reflectance %>
-</p>
-
-<p>
-  <strong>Normalized:</strong>
-  <%= @multi_spec_sample.normalized %>
-</p>
-
-<p>
-  <strong>Creatingapplication:</strong>
-  <%= @multi_spec_sample.creatingApplication %>
-</p>
-
-<p>
   <strong>Creatingapplication:</strong>
   <%= @multi_spec_sample.creatingApplication %>
 </p>
@@ -71,13 +46,13 @@
 </p>
 
 <p>
-  <strong>Createdon:</strong>
-  <%= @multi_spec_sample.createdOn %>
+  <strong>Profileid:</strong>
+  <%= @multi_spec_sample.profileID %>
 </p>
 
 <p>
-  <strong>Profileid:</strong>
-  <%= @multi_spec_sample.profileID %>
+  <strong>Upload status:</strong>
+  <%= @multi_spec_sample.upload_status %>
 </p>
 
 <%= link_to 'Edit', edit_multi_spec_sample_path(@multi_spec_sample) %> |

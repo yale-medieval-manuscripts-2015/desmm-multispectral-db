@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :MultiSpecSample_id %><br>
-    <%= f.number_field :MultiSpecSample_id %>
+    <%= f.label :multi_spec_sample_id %><br>
+    <%= f.text_field :multi_spec_sample_id %>
+  </div>
+  <div class="field">
+    <%= f.label :wavelength %><br>
+    <%= f.text_field :wavelength %>
   </div>
   <div class="field">
     <%= f.label :range %><br>
@@ -21,7 +25,19 @@
   </div>
   <div class="field">
     <%= f.label :value %><br>
-    <%= f.number_field :value %>
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :reflectance %><br>
+    <%= f.number_field :reflectance %>
+  </div>
+  <div class="field">
+    <%= f.label :normalized %><br>
+    <%= f.check_box :normalized %>
+  </div>
+  <div class="field">
+    <%= f.label :upload_status %><br>
+    <%= f.text_field :upload_status %>
   </div>
   <div class="actions">
     <%= f.submit %>

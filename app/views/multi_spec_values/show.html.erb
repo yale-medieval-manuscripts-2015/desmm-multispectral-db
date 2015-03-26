@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Multispecsample:</strong>
-  <%= @multi_spec_value.MultiSpecSample_id %>
+  <strong>Multi spec sample:</strong>
+  <%= @multi_spec_value.multi_spec_sample_id %>
+</p>
+
+<p>
+  <strong>Wavelength:</strong>
+  <%= @multi_spec_value.wavelength %>
 </p>
 
 <p>
@@ -13,6 +18,21 @@
 <p>
   <strong>Value:</strong>
   <%= @multi_spec_value.value %>
+</p>
+
+<p>
+  <strong>Reflectance:</strong>
+  <%= @multi_spec_value.reflectance %>
+</p>
+
+<p>
+  <strong>Normalized:</strong>
+  <%= @multi_spec_value.normalized %>
+</p>
+
+<p>
+  <strong>Upload status:</strong>
+  <%= @multi_spec_value.upload_status %>
 </p>
 
 <%= link_to 'Edit', edit_multi_spec_value_path(@multi_spec_value) %> |

@@ -1,1 +1,1 @@
-json.extract! @multi_spec_tag, :id, :MultiSpecSample_id, :, :Tag, :, :TagValue, :, :created_at, :updated_at
+json.extract! @multi_spec_tag, :id, :multi_spec_sample_id, :Tag, :TagValue, :upload_status, :created_at, :updated_at
