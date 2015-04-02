@@ -5,6 +5,12 @@ source 'https://rubygems.org'
 #gem 'rails'
 gem 'rails', github: 'rails/rails', branch: '4-2-stable'  # avoid arel problem
 
+#gem 'devise'
+gem 'therubyracer'
+gem 'devise', '~> 3.4.0'   # or later
+gem 'omniauth'
+gem 'omniauth-cas'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -39,7 +45,7 @@ gem 'unicorn'
 gem 'dropzonejs-rails'
 
 # carrierwave for upload details
-gem 'carrierwave'
+#gem 'carrierwave'
 
 # use rspec for tests
 gem 'rspec-rails'

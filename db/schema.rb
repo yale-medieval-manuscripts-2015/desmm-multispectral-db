@@ -11,63 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325023621) do
-
-  create_table "activities", force: :cascade do |t|
-    t.string   "MultiSpecSample_id"
-    t.string   "Status"
-    t.datetime "UploadedOn"
-    t.string   "UploadedBy"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-  end
-
-  create_table "multi_spec_bar_charts", force: :cascade do |t|
-    t.string   "multi_spec_sample_id"
-    t.string   "barchart_png_filename"
-    t.string   "bar"
-    t.binary   "chart_png_image"
-    t.string   "upload_status"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-  end
-
-  create_table "multi_spec_samples", force: :cascade do |t|
-    t.string   "multi_spec_sample_id"
-    t.string   "manifest"
-    t.string   "canvas"
-    t.integer  "x"
-    t.integer  "y"
-    t.string   "creatingApplication"
-    t.text     "comment"
-    t.string   "exrFileName"
-    t.string   "user"
-    t.integer  "profileID"
-    t.string   "upload_status"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  create_table "multi_spec_tags", force: :cascade do |t|
-    t.string   "multi_spec_sample_id"
-    t.string   "Tag"
-    t.string   "TagValue"
-    t.string   "upload_status"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  create_table "multi_spec_values", force: :cascade do |t|
-    t.string   "multi_spec_sample_id"
-    t.string   "wavelength"
-    t.integer  "range"
-    t.float    "value"
-    t.integer  "reflectance"
-    t.boolean  "normalized"
-    t.string   "upload_status"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
+ActiveRecord::Schema.define(version: 20150402205604) do
 
   create_table "multi_spectral_profiles", force: :cascade do |t|
     t.integer  "profileId"
@@ -89,5 +33,79 @@ ActiveRecord::Schema.define(version: 20150325023621) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "multispectral_bar_charts", force: :cascade do |t|
+    t.string   "barchart_png_filename"
+    t.binary   "bar_chart_png_image"
+    t.string   "upload_status"
+    t.integer  "multispectral_sample_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "multispectral_bar_charts", ["multispectral_sample_id"], name: "index_multispectral_bar_charts_on_multispectral_sample_id"
+
+  create_table "multispectral_samples", force: :cascade do |t|
+    t.string   "multispectral_sample_semantic_id"
+    t.string   "manifest"
+    t.string   "canvas"
+    t.integer  "x"
+    t.integer  "y"
+    t.string   "wavelength"
+    t.string   "reflectance"
+    t.boolean  "normalized"
+    t.string   "creating_application"
+    t.string   "creating_application_version"
+    t.text     "comment"
+    t.string   "exr_file_name"
+    t.string   "user"
+    t.integer  "profile_id"
+    t.string   "upload_status"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  create_table "multispectral_tags", force: :cascade do |t|
+    t.string   "hash_tag"
+    t.string   "facet_category"
+    t.string   "facet_value"
+    t.string   "upload_status"
+    t.integer  "multispectral_sample_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "multispectral_tags", ["multispectral_sample_id"], name: "index_multispectral_tags_on_multispectral_sample_id"
+
+  create_table "multispectral_values", force: :cascade do |t|
+    t.integer  "range"
+    t.float    "value"
+    t.string   "upload_status"
+    t.integer  "multispectral_sample_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "multispectral_values", ["multispectral_sample_id"], name: "index_multispectral_values_on_multispectral_sample_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "provider"
+    t.string   "uid"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

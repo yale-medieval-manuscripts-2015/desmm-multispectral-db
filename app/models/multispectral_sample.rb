@@ -1,0 +1,26 @@
+class MultispectralSample < ActiveRecord::Base
+  has_many :multispectral_values
+  has_many :multispectral_tags
+  has_one :multispectral_bar_chart
+
+  accepts_nested_attributes_for :multispectral_values
+  accepts_nested_attributes_for :multispectral_tags
+  accepts_nested_attributes_for :multispectral_bar_chart
+
+  attr_accessible :multispectral_sample_semantic_id,
+                  :manifest,
+                  :canvas,
+                  :x,
+                  :y,
+                  :wavelength,
+                  :reflectance,
+                  :normalized,
+                  :creating_application,
+                  :creating_application_version,
+                  :comment,
+                  :exr_file_name,
+                  :user,
+                  :profile_id,
+                  :upload_status,
+                  :multispectral_values_attributes
+end

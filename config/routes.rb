@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :multi_spec_values
-  resources :multi_spec_tags
-  resources :multi_spec_bar_charts
-  resources :multi_spec_samples
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
+
   resources :multi_spectral_profiles
   resources :multispec, only: [:create]
 
   #root 'multi_spec_samples#index'
-  root 'multi_spec_samples#upload_samples'
-  post 'multi_spec_samples/upload-target' => 'multi_spec_samples#upload_target'
-  post 'multi_spec_samples/:ms_json' => 'multi_spec_samples#createFromJson'
+  root 'multi_spectral_samples#upload_samples'
+  post 'multi_spectral_samples/upload-target' => 'multi_spectral_samples#upload_target'
+  post 'multi_spectral_samples/:ms_json' => 'multi_spectral_samples#createFromJson'
 
 
   #root :to => 'multi_spec_samples#index'
