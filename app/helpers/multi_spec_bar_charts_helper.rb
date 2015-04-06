@@ -1,2 +1,0 @@
-module MultiSpecBarChartsHelper
-end

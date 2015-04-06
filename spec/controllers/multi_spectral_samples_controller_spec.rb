@@ -136,7 +136,7 @@ RSpec.describe MultiSpectralSamplesController, :type => :controller do
         expect {post :createFromJson, ms_json: exrJsonString}.to change(MultispectralSample, :count).by(1)
       end
       it "creates a new BarChart" do
-        expect {post :createFromJson, ms_json: exrJsonString}.to change(MultispectralBarChart, :count).by(1)
+        expect {post :createFromJson, ms_json: exrJsonString}.to change(MultispectralBarchart, :count).by(1)
       end
       it "creates 8 new MultiSpecValue" do
         expect {post :createFromJson, ms_json: exrJsonString}.to change(MultispectralValue, :count).by(8)

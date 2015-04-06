@@ -1,4 +1,4 @@
-class MultispectralBarChart < ActiveRecord::Base
+class MultispectralBarchart < ActiveRecord::Base
   belongs_to :multispectral_sample
 
   attr_accessible :barchart_png_filename,

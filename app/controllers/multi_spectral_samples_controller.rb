@@ -80,7 +80,7 @@ class MultiSpectralSamplesController < ApplicationController
 
     puts @ms.id
     # build barchart record
-    @ms.multi_spectral_bar_charts.create(multi_spectral_sample_id:@id,
+    @ms.multi_spectral_barcharts.create(multi_spectral_sample_id:@id,
                                          barchart_png_filename:ms_json['spectralImage'],
                                          bar:'is this needed',
                                          upload_status:'pending')
