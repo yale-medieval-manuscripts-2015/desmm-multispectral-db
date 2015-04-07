@@ -2,8 +2,9 @@ require "JSON"
 module Hyper3dJson
 
 
-def mapHyper3dJsonToModel ms_json
-  ms_json_str = params['ms_json']
+def mapHyper3dJsonToModel ms_json_str
+  # ms_json_str = params['ms_json_str]
+  # ms_json = JSON.parse(ms_json_str)
   ms_json = JSON.parse(ms_json_str)
 
   msh = Hash.new
@@ -60,11 +61,6 @@ def mapHyper3dJsonToModel ms_json
 
   # create initial sample and child records: tags, values and barchart
   multispec_sample = MultispectralSample.create(msh)
-  # puts " multispec_sample.profile = " +  multispec_sample.profile_id.to_s
-
-  respond_to do |format|
-    format.html {redirect_to 'multi_spectral_samples#index'}
-  end
 
 end
 end

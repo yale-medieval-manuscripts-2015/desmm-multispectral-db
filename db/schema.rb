@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150406194350) do
+ActiveRecord::Schema.define(version: 20150407212213) do
 
   create_table "multi_spectral_profiles", force: :cascade do |t|
     t.integer  "profileId"
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 20150406194350) do
   end
 
   add_index "multispectral_barcharts", ["multispectral_sample_id"], name: "index_multispectral_barcharts_on_multispectral_sample_id"
+
+  create_table "multispectral_profiles", force: :cascade do |t|
+    t.integer  "profile_id"
+    t.integer  "num_bands"
+    t.string   "band_ranges"
+    t.string   "creating_application"
+    t.string   "creating_application_version"
+    t.text     "notes"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   create_table "multispectral_samples", force: :cascade do |t|
     t.string   "multispectral_sample_semantic_id"
@@ -87,6 +98,11 @@ ActiveRecord::Schema.define(version: 20150406194350) do
   end
 
   add_index "multispectral_values", ["multispectral_sample_id"], name: "index_multispectral_values_on_multispectral_sample_id"
+
+  create_table "uploads", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
