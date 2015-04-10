@@ -3,8 +3,7 @@ module Hyper3dJson
 
 
 def mapHyper3dJsonToModel ms_json_str
-  # ms_json_str = params['ms_json_str]
-  # ms_json = JSON.parse(ms_json_str)
+  #puts 'in Hyper3dJson: content_type = ' + content_type
   ms_json = JSON.parse(ms_json_str)
 
   msh = Hash.new
@@ -40,7 +39,15 @@ def mapHyper3dJsonToModel ms_json_str
   msh_barchart = Hash.new
   msh_barchart['barchart_png_filename'] = ms_json['spectralImage']
   msh_barchart['barchart_png_image'] = 'image bytes here'
-  msh_barchart['upload_status'] = 'pending'
+  msh_barchart['upload_status'] = 'image data not loaded'
+
+  # if png was already uploaded, grab its image data, set status to 'complete' and delete it.
+  bar = check_barchart_exists ms_json['spectralImage']
+  if !bar.nil? && bar.upload_status == 'no parent'
+    msh_barchart['barchart_png_image'] = bar.barchart_png_image
+    msh_barchart['upload_status'] = 'complete'
+    bar.destroy
+  end
   msh['multispectral_barchart_attributes'] = msh_barchart
 
   # build initial tag records
@@ -63,4 +70,45 @@ def mapHyper3dJsonToModel ms_json_str
   multispec_sample = MultispectralSample.create(msh)
 
 end
+
+def mapHyper3dImageToModel image_data, filename
+
+  puts 'in mapHyper3dImageToModel: '
+  puts 'filename = ' + filename
+
+  # todo:
+  # Check if a barchart record already exists for this png
+  #   - because initial rec was created with .msa file create
+  #     - check that upload_status = 'image data not loaded' and has a foreign key
+  #       - update THAT record with:
+  #          - image_data
+  #          - upload_status = 'complete'
+  #   - because was already loaded before
+  #     - ignore
+  #  else create new orphan child to be associcated to sample collection when it is uploaded:
+
+  # if there already is a child barchart record from, use this image data, set status to 'complete' and update it.
+  bar = check_barchart_exists filename
+  if !bar.nil? && bar.upload_status == 'image data not loaded'
+    bar.barchart_png_image = image_data
+    bar.upload_status = 'complete'
+    bar.save
+  else
+    ms_barchart = MultispectralBarchart.create do |chart|
+      chart.barchart_png_filename = filename
+      chart.barchart_png_image = image_data
+      chart.upload_status = 'no parent'
+    end
+  end
+end
+
+  def check_barchart_exists filename
+    bar=MultispectralBarchart.find_by(barchart_png_filename:filename)
+    if !bar.nil?
+      puts 'check_barchart_exists: status = ' + bar.upload_status
+    else
+      puts 'bar is nil'
+    end
+    bar
+  end
 end

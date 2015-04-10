@@ -7,14 +7,18 @@ class UploadController < ApplicationController
   end
 
   def uploadFile
-    #ms_json_str = params[:upload]['datafile'].read
-    if params['ms_json'].present?
-      ms_json_str = params['ms_json']
-    else
-      ms_json_str = params[:upload]['datafile'].read
+    content_type = params[:upload]['datafile'].content_type
+    @file_name = params[:upload]['datafile'].original_filename
+
+    if content_type ==  'image/png'
+      image_data = params[:upload]['datafile'].read
+      mapHyper3dImageToModel image_data, @file_name
     end
-    puts 'ms_json = ' + ms_json_str
-    mapHyper3dJsonToModel ms_json_str
+
+    if content_type ==  'application/octet-stream'
+        upload_data = params[:upload]['datafile'].read
+        mapHyper3dJsonToModel upload_data
+    end
 
     render :text => "File has been uploaded successfully"
     #respond_to do |format|
@@ -22,4 +26,4 @@ class UploadController < ApplicationController
     #end
   end
 
-end
+  end

@@ -24,3 +24,6 @@
 .rvmrc
 .ruby-gemset
 .ruby-version
+
+# Ignore coverage reports
+#/coverage

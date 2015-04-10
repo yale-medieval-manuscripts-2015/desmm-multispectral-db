@@ -129,7 +129,7 @@ RSpec.describe MultiSpectralSamplesController, :type => :controller do
     },
     "comment" :  "test"
     }'
-    ms_json = JSON.parse(exrJsonString)
+
     # change below to post once with multiple expectations
     describe "createFromJson" do
       it "creates a new MultispectralSample" do

@@ -1,9 +1,11 @@
 require 'rails_helper'
+require "Hyper3dJson.rb"
+include Hyper3dJson
 
 RSpec.describe UploadController, :type => :controller do
 
   describe "POST createFromJson" do
-    exrJsonString = '{
+    msaJsonString = '{
     "originalImage" :  "ellesmere_6v.exr",
     "spectralImage" :  "ellesmere_6v_718_1136_norm.png",
     "sampleLocation" : {
@@ -31,23 +33,23 @@ RSpec.describe UploadController, :type => :controller do
     },
     "comment" :  "test"
     }'
-    ms_json = JSON.parse(exrJsonString)
+
     # change below to post once with multiple expectations
     describe "createFromJson" do
       it "creates a new MultispectralSample" do
-        expect {post :uploadFile, ms_json: exrJsonString}.to change(MultispectralSample, :count).by(1)
+        #expect {post :uploadFile, ms_json: msaJsonString}.to change(MultispectralSample, :count).by(1)
+        expect {mapHyper3dJsonToModel msaJsonString}.to change(MultispectralSample, :count).by(1)
       end
       it "creates a new BarChart" do
-        expect {post :uploadFile, ms_json: exrJsonString}.to change(MultispectralBarchart, :count).by(1)
+        expect {mapHyper3dJsonToModel msaJsonString}.to change(MultispectralBarchart, :count).by(1)
       end
       it "creates 8 new MultiSpecValue" do
-        expect {post :uploadFile, ms_json: exrJsonString}.to change(MultispectralValue, :count).by(8)
+        expect {mapHyper3dJsonToModel msaJsonString}.to change(MultispectralValue, :count).by(8)
       end
       it "changes the count of MultipecTags" do
-        expect {post :uploadFile, ms_json: exrJsonString}.to change(MultispectralTag, :count)
+        expect {mapHyper3dJsonToModel msaJsonString}.to change(MultispectralTag, :count)
       end
     end
   end
-
 
 end

@@ -25,13 +25,6 @@ class MultiSpectralSamplesController < ApplicationController
   def edit
   end
 
-  def upload_samples
-  end
-
-  def upload_target
-    puts 'in upload-target method of controller'
-  end
-
   # POST /multi_spectral_samples
   # POST /multi_spectral_samples.json
   def create
