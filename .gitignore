@@ -26,4 +26,4 @@
 .ruby-version
 
 # Ignore coverage reports
-#/coverage
+/coverage

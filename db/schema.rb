@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407212213) do
+ActiveRecord::Schema.define(version: 20150415170016) do
+
+  create_table "canvas_lookups", force: :cascade do |t|
+    t.string   "canvas_id"
+    t.string   "object_file_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "canvas_lookups", ["canvas_id"], name: "index_canvas_lookups_on_canvas_id"
+  add_index "canvas_lookups", ["object_file_id"], name: "index_canvas_lookups_on_object_file_id"
 
   create_table "multi_spectral_profiles", force: :cascade do |t|
     t.integer  "profileId"

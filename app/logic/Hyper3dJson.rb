@@ -1,6 +1,8 @@
 require "JSON"
-module Hyper3dJson
+require "IIIF_and_Tags.rb"
+include IIIF_and_Tags
 
+module Hyper3dJson
 
 def mapHyper3dJsonToModel ms_json_str
   #puts 'in Hyper3dJson: content_type = ' + content_type
@@ -29,7 +31,7 @@ def mapHyper3dJsonToModel ms_json_str
     msh_values = Hash.new
     msh_values['range'] = value_pair[0],
     msh_values['value'] = value_pair[1].to_f,
-    msh_values['upload_status'] = 'pending'
+    msh_values['upload_status'] = 'succeeded'
     ms_values_array[i] = msh_values
     i+=1
   end
@@ -53,6 +55,7 @@ def mapHyper3dJsonToModel ms_json_str
   # build initial tag records
   ms_tags_array = Array.new
   i = 0
+  # need to have tagset and solr mappins first, or skip tags and add them later
   #tags = getTags(ms_json['originalImage'])
   tags = ['#adam', 'eve', '#adamandeve']
   tags.each do |tag|
@@ -64,10 +67,25 @@ def mapHyper3dJsonToModel ms_json_str
     ms_tags_array[i] = msh_tags
     i += 1
   end
-  msh['multispectral_tags_attributes'] = ms_tags_array
+  #msh['multispectral_tags_attributes'] = ms_tags_array #skip and add tags later
 
   # create initial sample and child records: tags, values and barchart
   multispec_sample = MultispectralSample.create(msh)
+
+  result = getCanvas multispec_sample.exr_file_name
+  ids = result.split('|')
+  manifest_url = ids[0]
+  canvas_id = ids[1]
+  multispec_sample.update(manifest: manifest_url, canvas: canvas_id)
+
+  # get annotation_list
+  annoList = getAnnotationList canvas_id
+
+  # use annotation_list to build unique tagset
+
+  # send tagset to TagManger.getAllSolrMappingsforTagSet and get all solr_mappings
+
+  # write children tags with tag names and solr categories and values
 
 end
 
