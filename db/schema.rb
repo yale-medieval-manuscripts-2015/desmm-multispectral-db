@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415170016) do
+ActiveRecord::Schema.define(version: 20150424203441) do
 
   create_table "canvas_lookups", force: :cascade do |t|
     t.string   "canvas_id"
@@ -82,6 +82,13 @@ ActiveRecord::Schema.define(version: 20150415170016) do
     t.string   "user"
     t.integer  "profile_id"
     t.string   "upload_status"
+    t.string   "manifest_label"
+    t.string   "canvas_label"
+    t.string   "institution"
+    t.string   "md_date"
+    t.string   "md_provenance"
+    t.string   "md_material"
+    t.string   "md_language"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
@@ -108,6 +115,11 @@ ActiveRecord::Schema.define(version: 20150415170016) do
   end
 
   add_index "multispectral_values", ["multispectral_sample_id"], name: "index_multispectral_values_on_multispectral_sample_id"
+
+  create_table "tests", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "uploads", force: :cascade do |t|
     t.datetime "created_at", null: false

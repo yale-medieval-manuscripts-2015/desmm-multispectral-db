@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   #root 'multi_spec_samples#index'
   #root 'multi_spectral_samples#upload_samples_dropzone'
   root 'upload#upload'
+  #root 'upload#upload_samples_dropzone'
+
   get '/index' => 'upload#upload'
   get '/upload' => 'upload#upload'
   get '/select' => 'upload#upload'
