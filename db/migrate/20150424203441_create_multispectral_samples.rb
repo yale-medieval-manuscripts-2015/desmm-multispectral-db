@@ -16,6 +16,13 @@ class CreateMultispectralSamples < ActiveRecord::Migration
       t.string :user
       t.integer :profile_id
       t.string :upload_status
+      t.string :manifest_label
+      t.string :canvas_label
+      t.string :institution
+      t.string :md_date
+      t.string :md_provenance
+      t.string :md_material
+      t.string :md_language
 
       t.timestamps null: false
     end

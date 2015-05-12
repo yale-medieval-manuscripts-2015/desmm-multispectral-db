@@ -56,6 +56,7 @@ module Hyper3dJson
     msh['multispectral_barchart_attributes'] = msh_barchart
 
     # create initial sample and child records: values and barchart
+    msh['canvas'] = '1) initial creation; no manifest/canvas info, no tags'
     multispec_sample = MultispectralSample.create(msh)
 
     # get canvas for canvas_id and manifest
@@ -64,8 +65,7 @@ module Hyper3dJson
       ids = result.split('|')
       manifest_url = ids[0]
       canvas_id = ids[1]
-      multispec_sample.update(manifest: manifest_url, canvas: canvas_id)
-
+      multispec_sample.update(manifest: manifest_url, canvas: canvas_id, upload_status: '2) has manifest/canvas info; no tags')
 
       # get tags via annotation list and create tag records per solr mapping
       # get annotation_list
@@ -82,7 +82,6 @@ module Hyper3dJson
       tagSetUrl =  @tagSetUrl + tagSetStr
       #tagUrl =  SolrConnectConfig.get("tagSetUrl") + tagSetStr
       jsonTagCat = JSON.parse(open(tagSetUrl).read)
-      puts 'jsonTagCat: ' + jsonTagCat.to_s
 
       # write children tags with tag names and solr categories and values
       tagSet.each do |tag|
@@ -101,6 +100,8 @@ module Hyper3dJson
           end
         end
       end
+      multispec_sample.update(manifest: manifest_url, canvas: canvas_id, upload_status: '3) complete')
+
     end
   end
 
@@ -109,9 +110,10 @@ module Hyper3dJson
     if !bar.nil? && bar.upload_status == 'image data not loaded'
       bar.barchart_png_image = image_data
       bar.upload_status = 'complete'
+      p 'bar.upload_status set to: ' +  bar.upload_status
       bar.save
     else
-      ms_barchart = MultispectralBarchart.create do |chart|
+      MultispectralBarchart.create do |chart|
         chart.barchart_png_filename = filename
         chart.barchart_png_image = image_data
         chart.upload_status = 'no parent'
