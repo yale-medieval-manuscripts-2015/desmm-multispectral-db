@@ -5,7 +5,7 @@ include IIIF_and_Tags
 
 module Hyper3dJson
 
-  def mapHyper3dJsonToModel ms_json_str
+  def mapHyper3dJsonToModel ms_json_str, batch_id
 
     #puts 'in Hyper3dJson: content_type = ' + content_type
     ms_json = JSON.parse(ms_json_str)
@@ -13,7 +13,10 @@ module Hyper3dJson
 
     # build sample record
     msh['multispectral_sample_semantic_id'] = ms_json['originalImage'] + '_' + ms_json['sampleLocation']['x' ].to_s + '_' + ms_json['sampleLocation']['y' ].to_s
-    msh['user'] = 'user to be named later'
+    #msh['user'] =  current_user.uid
+    msh['user'] =  current_user.name
+    msh['batch_id'] = batch_id.to_s
+    p '************ batch_id written: ' + msh['batch_id']
     msh['manifest'] = 'manifest to be named later'
     msh['canvas'] = 'canvas to be named later'
     msh['x'] = ms_json['sampleLocation']['x']
@@ -52,6 +55,7 @@ module Hyper3dJson
       msh_barchart['barchart_png_image'] = bar.barchart_png_image
       msh_barchart['upload_status'] = 'complete'
       bar.destroy
+      #bar.destroy(bar.id)
     end
     msh['multispectral_barchart_attributes'] = msh_barchart
 
@@ -122,7 +126,12 @@ module Hyper3dJson
   end
 
   def check_barchart_exists filename
+    p 'barchart check: filename = ' + filename
     bar=MultispectralBarchart.find_by(barchart_png_filename:filename)
+    #bar=MultispectralBarchart.where(:barchart_png_filename => filename)
+    p 'status = ' + bar.barchart_png_filename if !bar.nil?
+    p 'barchart check: ' + bar.nil?.to_s
+
     bar
   end
 end

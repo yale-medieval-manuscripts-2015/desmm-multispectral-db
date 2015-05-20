@@ -1,0 +1,27 @@
+
+<h1>Multispectral Image Data Browser</h1>
+<h3>Batch Load Results</h3>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>BarChart</th>
+        <th>ImageThumbnail</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+        <% @batch_samples.each do |sample| %>
+            <tr>
+                <!--<td><%#= sample.id %></td>-->
+                <!--<td><%#= sample.multispectral_barchart.barchart_png_filename%></td>-->
+                <td><%= render_barchart(sample) %></td>
+                <td><%= render_jpeg_via_IIIF (sample)%></td>
+                <td><%= render_metadata (sample)%></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<br>

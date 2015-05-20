@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MultiSpectral</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
-
-</body>
+    <head>
+      <title>MultiSpectral</title>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="assets/style.css">
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+    </head>
+    <body>
+        <!--<p class="notice"><%#= notice %></p>
+        <p class="alert"><%#= alert %></p>-->
+        <%= yield %>
+    </body>
 </html>

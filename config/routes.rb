@@ -7,14 +7,20 @@ Rails.application.routes.draw do
 
   #root 'multi_spec_samples#index'
   #root 'multi_spectral_samples#upload_samples_dropzone'
-  root 'upload#upload'
-  #root 'upload#upload_samples_dropzone'
+  #root 'upload#upload'
+  root 'upload#upload_samples_dropzone'
 
-  get '/index' => 'upload#upload'
+  get '/index' => 'upload#index'
   get '/upload' => 'upload#upload'
   get '/select' => 'upload#upload'
+  get '/continue' => 'browse#continue'
+  get '/browse' => 'browse#browse'
 
+  post '/index' => 'upload#index'
   post 'uploadFile' => 'upload#uploadFile'
+  post '/uploadFile' => 'upload#uploadFile'
+  #get 'uploadFile' => 'upload#uploadFile'
+  #get '/uploadFile' => 'upload#uploadFile'
 
   #post 'multi_spec_samples/file_upload' => 'multi_spec_samples#file_upload'
   # get 'upload/exr/:id' => 'upload#receive_exr_file'

@@ -1,0 +1,31 @@
+
+<h1>Multispectral Data Browser</h1>
+<!--    for each multisample with the last uuid:
+    -- get imag3e from IIIF API
+    -- get barchart
+    -- get metadata
+-->
+<h3>All tags</h3>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>BarChart</th>
+        <th>ImageThumbnail</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <!--<%# @batch_samples.each do |sample| %>
+        <tr>
+            <td><%#= render_jpeg_via_IIIF (sample)%></td>
+            <td><%#= sample.MultispectralBarchart.barchart_png_image %></td>
+            <!--<td><%#= tag.label %></td>
+            <td><%#= tag.description %></td>-->
+        <!--</tr>-->
+    <%# end %>
+    </tbody>
+</table>
+
+<br>
