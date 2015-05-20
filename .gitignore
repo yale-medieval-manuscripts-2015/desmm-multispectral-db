@@ -19,8 +19,12 @@
 .idea/*
 /.idea/*
 *.iml
+/*.iml
 .DS_Store
 .env
 .rvmrc
 .ruby-gemset
 .ruby-version
+
+# Ignore coverage reports
+/coverage

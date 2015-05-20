@@ -1,4 +1,5 @@
 namespace :import do
+
   desc "imports user data from a csv file"
   task :users => :environment do
     require 'csv'
@@ -14,6 +15,21 @@ namespace :import do
       @user = User.create(provider: provider, uid: uid, encrypted_password: password, email: email)
       @user.save!(options={validate: false})
       puts "user.provider = ", @user.provider
+    end
+  end
+
+  desc "imports canvas_lookup data from a csv file"
+  task :canvas_lookups => :environment do
+    require 'csv'
+    CSV.foreach('importData/canvas_lookup.csv') do |row|
+        canvas_id = row[0]
+        object_file_id = row[1]
+        puts row.inspect
+        puts "CanvasId: " + canvas_id + " image_id: " + object_file_id
+        @canvasLookup = CanvasLookup.create(canvas_id: canvas_id, object_file_id: object_file_id)
+        @canvasLookup.save!(options={validate: false})
+        puts "canvasLookup.canvas_id = ", @canvasLookup.canvas_id
+
     end
   end
 end

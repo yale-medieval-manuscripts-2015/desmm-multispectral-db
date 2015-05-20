@@ -25,13 +25,6 @@ class MultiSpectralSamplesController < ApplicationController
   def edit
   end
 
-  def upload_samples
-  end
-
-  def upload_target
-    puts 'in upload-target method of controller'
-  end
-
   # POST /multi_spectral_samples
   # POST /multi_spectral_samples.json
   def create
@@ -48,74 +41,9 @@ class MultiSpectralSamplesController < ApplicationController
     end
   end
 
-  def createFromJson
-    # receive files here and process to add to model
-    #ms_json = params['ms_json']
-    ms_json_str = params['ms_json']
-    ms_json = JSON.parse(ms_json_str)
-    #puts 'controller: json_string: ' + ms_json.to_s
-    #puts 'original image = ' + ms_json['originalImage']
-    #puts 'samples wavelength = ' + ms_json['samples']['wavelength'].to_s
-
-    mapHyper3dJsonToModel ms_json_str
-
-
-=begin
-    @ms = MultiSpectralSample.new
-    #@ms = params['ms_sample']
-    @ms.multi_spectral_sample_id =  ms_json['originalImage'] + '_' + ms_json['sampleLocation']['x' ].to_s + '_' + ms_json['sampleLocation']['y' ].to_s
-    @ms.user = 'user to be named later'
-    @ms.manifest = 'manifest to be named later'
-    @ms.canvas = 'canvas to be named later'
-    @ms.x = ms_json['sampleLocation']['x']
-    @ms.y = ms_json['sampleLocation']['y']
-    @ms.wavelength = ms_json['samples']['wavelength']
-    @ms.reflectance = ms_json['samples']['reflectance']
-    @ms.normalized = ms_json['samples']['normalized']
-    @ms.creating_application = ms_json['creatingApplication']['name']
-    @ms.creating_application_version = ms_json['creatingApplication']['version']
-    @ms.comment = ms_json['comment']
-    @ms.exr_file_name = ms_json['originalImage']
-    @ms.save
-
-    puts @ms.id
-    # build barchart record
-    @ms.multi_spectral_barcharts.create(multi_spectral_sample_id:@id,
-                                         barchart_png_filename:ms_json['spectralImage'],
-                                         bar:'is this needed',
-                                         upload_status:'pending')
-    # build values records
-    ms_json['samples']['values'].each do |value|
-      @ms.multi_spectral_values.create(multi_spectral_sample_id:@id,
-                                       range:value[0],
-                                       value:value[1].to_f,
-                                       upload_status:'pending')
-    end
-
-    # build initial tag records
-    #tags = Array.new
-    tags = getTags(ms_json['originalImage'])
-    #tags = ['#adam', 'eve', '#adamandeve']
-    tags.each do |tag|
-      tag.gsub!(/#/,"")
-      @ms.multi_spectral_tags.create(multi_spectral_sample_id:@id,
-                                     Tag:tag,
-                                     upload_status:'pending')
-    end
-
-    # create initial child records: tags, values and barchart
-    #barchart.create()
-    #tags.build()
-    #values.build()
-    #ms_json
-    respond_to do |format|
-      format.html {redirect_to 'multi_spectral_samples#index'}
-    end
-=end
-  end
-
   # PATCH/PUT /multi_spectral_samples/1
   # PATCH/PUT /multi_spectral_samples/1.json
+=begin
   def update
     respond_to do |format|
       if @multi_spectral_sample.update(multi_spectral_sample_params)
@@ -127,6 +55,7 @@ class MultiSpectralSamplesController < ApplicationController
       end
     end
   end
+=end
 
   # DELETE /multi_spectral_samples/1
   # DELETE /multi_spectral_samples/1.json
@@ -137,8 +66,6 @@ class MultiSpectralSamplesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-
 
   private
   # Use callbacks to share common setup or constraints between actions.

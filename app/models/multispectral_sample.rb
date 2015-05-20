@@ -24,6 +24,13 @@ class MultispectralSample < ActiveRecord::Base
                   :upload_status,
                   :multispectral_values_attributes,
                   :multispectral_barchart_attributes,
-                  :multispectral_tags_attributes
-
+                  :multispectral_tags_attributes,
+                  :manifest_label,
+                  :canvas_label,
+                  :institution,
+                  :license,
+                  :md_date,
+                  :md_provenance,
+                  :md_material,
+                  :md_language
 end

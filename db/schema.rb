@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150406194350) do
+ActiveRecord::Schema.define(version: 20150424203441) do
+
+  create_table "canvas_lookups", force: :cascade do |t|
+    t.string   "canvas_id"
+    t.string   "object_file_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "canvas_lookups", ["canvas_id"], name: "index_canvas_lookups_on_canvas_id"
+  add_index "canvas_lookups", ["object_file_id"], name: "index_canvas_lookups_on_object_file_id"
 
   create_table "multi_spectral_profiles", force: :cascade do |t|
     t.integer  "profileId"
@@ -45,6 +55,17 @@ ActiveRecord::Schema.define(version: 20150406194350) do
 
   add_index "multispectral_barcharts", ["multispectral_sample_id"], name: "index_multispectral_barcharts_on_multispectral_sample_id"
 
+  create_table "multispectral_profiles", force: :cascade do |t|
+    t.integer  "profile_id"
+    t.integer  "num_bands"
+    t.string   "band_ranges"
+    t.string   "creating_application"
+    t.string   "creating_application_version"
+    t.text     "notes"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
   create_table "multispectral_samples", force: :cascade do |t|
     t.string   "multispectral_sample_semantic_id"
     t.string   "manifest"
@@ -61,6 +82,13 @@ ActiveRecord::Schema.define(version: 20150406194350) do
     t.string   "user"
     t.integer  "profile_id"
     t.string   "upload_status"
+    t.string   "manifest_label"
+    t.string   "canvas_label"
+    t.string   "institution"
+    t.string   "md_date"
+    t.string   "md_provenance"
+    t.string   "md_material"
+    t.string   "md_language"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
@@ -87,6 +115,16 @@ ActiveRecord::Schema.define(version: 20150406194350) do
   end
 
   add_index "multispectral_values", ["multispectral_sample_id"], name: "index_multispectral_values_on_multispectral_sample_id"
+
+  create_table "tests", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "uploads", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
