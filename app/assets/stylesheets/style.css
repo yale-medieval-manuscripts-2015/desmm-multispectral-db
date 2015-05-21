@@ -1,0 +1,87 @@
+html, body {
+    height: 100%;
+}
+#actions {
+    margin: 2em 0;
+}
+
+
+/* Mimic table appearance */
+div.table {
+    display: table;
+}
+div.table .file-row {
+    display: table-row;
+}
+div.table .file-row > div {
+    display: table-cell;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+    padding: 8px;
+}
+
+div.table .file-row div:last-child
+{
+    text-align: center;
+}
+
+div.table .file-row:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+
+
+/* The total progress gets shown by event listeners */
+#total-progress {
+    opacity: 0;
+    transition: opacity 0.3s linear;
+}
+
+/* Hide the progress bar when finished */
+#previews .file-row.dz-success .progress {
+    opacity: 0;
+    transition: opacity 0.3s linear;
+}
+
+/* Hide the delete button initially */
+#previews .file-row .delete {
+    display: none;
+}
+
+/* Hide the start and cancel buttons and show the delete button */
+
+#previews .file-row.dz-success .start,
+#previews .file-row.dz-success .cancel {
+    display: none;
+}
+#previews .file-row.dz-success .delete {
+    display: block;
+}
+
+#alert
+{
+    width: 40%;
+    border-radius: 7px;
+    border: 4px solid grey;
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    background-color: white;
+    padding: 15px;
+    text-align: center;
+    z-index: 999;
+    display: none;
+    font-weight: bold;
+    font-size: 13pt;
+}
+
+#alert a
+{
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+div#actions
+{
+    text-align: center;
+}

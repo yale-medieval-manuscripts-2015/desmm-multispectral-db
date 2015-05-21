@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424203441) do
+ActiveRecord::Schema.define(version: 20150520151952) do
 
   create_table "canvas_lookups", force: :cascade do |t|
     t.string   "canvas_id"
@@ -22,27 +22,6 @@ ActiveRecord::Schema.define(version: 20150424203441) do
 
   add_index "canvas_lookups", ["canvas_id"], name: "index_canvas_lookups_on_canvas_id"
   add_index "canvas_lookups", ["object_file_id"], name: "index_canvas_lookups_on_object_file_id"
-
-  create_table "multi_spectral_profiles", force: :cascade do |t|
-    t.integer  "profileId"
-    t.integer  "NumBands"
-    t.string   "BandRanges"
-    t.text     "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "multispec_uploads", force: :cascade do |t|
-    t.string   "file_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "multispecs", force: :cascade do |t|
-    t.string   "file_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "multispectral_barcharts", force: :cascade do |t|
     t.string   "barchart_png_filename"
@@ -91,6 +70,7 @@ ActiveRecord::Schema.define(version: 20150424203441) do
     t.string   "md_language"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.string   "batch_id"
   end
 
   create_table "multispectral_tags", force: :cascade do |t|
@@ -141,9 +121,7 @@ ActiveRecord::Schema.define(version: 20150424203441) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
+    t.string   "name"
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

@@ -32,5 +32,6 @@ class MultispectralSample < ActiveRecord::Base
                   :md_date,
                   :md_provenance,
                   :md_material,
-                  :md_language
+                  :md_language,
+                  :batch_id
 end
