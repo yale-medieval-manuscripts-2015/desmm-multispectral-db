@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post '/index' => 'upload#index'
   post 'uploadFile' => 'upload#uploadFile'
   post '/uploadFile' => 'upload#uploadFile'
+  post '/continue' => 'browse#continue'
   #get 'uploadFile' => 'upload#uploadFile'
   #get '/uploadFile' => 'upload#uploadFile'
 

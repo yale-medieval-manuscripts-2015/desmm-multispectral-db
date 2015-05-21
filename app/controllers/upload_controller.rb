@@ -10,12 +10,12 @@ class UploadController < ApplicationController
   end
 
   def uploadFile
-    sleep 5
+    #sleep 5
     p 'In uploadController#uploadFile'
 
-    #batch_id = params["batchId"]
-    batch_id = 1
-    p 'batch_id = ' + batch_id.to_s
+    batch_id = params["batchId"]
+    batch_id = '1' # temporary
+    #p 'batch_id = ' + batch_id.to_s
 
     #@content_type = params[:upload]['datafile'].content_type
     #@file_name = params[:upload]['datafile'].original_filename
