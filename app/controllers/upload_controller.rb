@@ -34,6 +34,7 @@ class UploadController < ApplicationController
       p 'msa'
         #upload_data = params[:upload]['datafile'].read
         upload_data = params['file'].read
+        upload_data.gsub!(/,\n}/,"}")
         mapHyper3dJsonToModel upload_data, batch_id
     end
 
