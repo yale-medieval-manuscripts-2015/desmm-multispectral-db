@@ -1,5 +1,5 @@
-require "rubygems"
-require "JSON"
+#require "rubygems"
+#require "JSON"
 require 'open-uri'
 
 module IIIF_and_Tags

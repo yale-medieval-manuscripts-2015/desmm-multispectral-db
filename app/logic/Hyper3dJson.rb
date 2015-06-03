@@ -1,5 +1,5 @@
-require "rubygems"
-require "JSON"
+#require "rubygems"
+#require "JSON"
 require 'set'
 require "IIIF_and_Tags.rb"
 include IIIF_and_Tags
