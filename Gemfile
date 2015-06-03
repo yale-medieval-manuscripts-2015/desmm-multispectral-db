@@ -8,6 +8,8 @@ gem 'rails', github: 'rails/rails', branch: '4-2-stable'  # avoid arel problem
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'sprockets', '2.12.3'
 
+gem 'json'
+
 gem 'therubyracer'
 gem 'devise', '~> 3.4.0'   # or later
 gem 'omniauth'
