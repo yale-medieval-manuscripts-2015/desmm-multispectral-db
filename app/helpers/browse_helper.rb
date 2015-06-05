@@ -35,7 +35,7 @@ module BrowseHelper
     date = sample.updated_at if sample.updated_at > sample.created_at
     md += '<b>date:</b>' + date.to_s + '<br>'
     md += '<b>comment:</b>' + sample.comment + '<br>'
-    md += '<b>created by:</b>' + sample.user + '<br>'
+    #md += '<b>created by:</b>' + sample.user + '<br>'
     html = "<td><pre>#{md}</pre></td>"
     html.html_safe
   end
