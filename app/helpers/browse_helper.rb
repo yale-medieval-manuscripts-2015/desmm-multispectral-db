@@ -30,7 +30,7 @@ module BrowseHelper
     md += '<b>Canvas:</b> ' + sample.canvas + '<br>'
     md += '<b>png file:</b> ' + bar.barchart_png_filename + '<br>'
     md += '<b>x,y:</b> ' + sample.x.to_s + ', ' + sample.y.to_s+ '<br>'
-    md += '<b>created by:</b>' + sample.user + '<br>'
+    md += '<b>created by:</b>' + sample.user + '<br>' if !sample.user.nil?
     date = sample.created_at
     date = sample.updated_at if sample.updated_at > sample.created_at
     md += '<b>date:</b>' + date.to_s + '<br>'
