@@ -10,12 +10,11 @@ class UploadController < ApplicationController
   end
 
   def uploadFile
-    #sleep 5
     p 'In uploadController#uploadFile'
 
     batch_id = params["batchId"]
-    batch_id = '1' # temporary
-    #p 'batch_id = ' + batch_id.to_s
+    #batch_id = '1' # temporary
+    p 'batch_id = ' + batch_id.to_s
 
     #@content_type = params[:upload]['datafile'].content_type
     #@file_name = params[:upload]['datafile'].original_filename
@@ -49,4 +48,19 @@ class UploadController < ApplicationController
     #end
   end
 
+  def continue
+    batch_id = params["batchId"]
+    #p 'batch_id = ' + batch_id.to_s
+    @batch_samples =  MultispectralSample.where(batch_id: batch_id)
+    #p 'sample count = ' + @batch_samples.count.to_s
+  end
+
+  def detail
+    # the front-end needs to send the sample id for the detail page
+    sample_id = params["sampleId"]
+    p 'sample_id = ' + sample_id.to_s
+    @sample =  MultispectralSample.where(id: sample_id).first
+    @sample.multispectral_sample_semantic_id
+    p 'in detail controller method: sample.id = ' + @sample.multispectral_sample_semantic_id
+  end
   end

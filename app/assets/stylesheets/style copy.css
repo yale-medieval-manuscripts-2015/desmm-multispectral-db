@@ -1,0 +1,201 @@
+@font-face {
+    font-family: 'YaleBold';
+    src: url('../assets/yaledesbolrom-webfont.eot');
+    src: url('../assets/yaledesbolrom-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../assets/yaledesbolrom-webfont.woff') format('woff'),
+         url('../assets/yaledesbolrom-webfont.ttf') format('truetype'),
+         url('../fonts/yaledesbolrom-webfont.svg#yaledesignboldroman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    height: 100%;
+}
+#actions {
+    margin: 2em 0;
+    width: 100%;
+}
+
+.col-centered
+{ 
+    margin: 0 auto;
+}
+
+/* Mimic table appearance */
+div.table {
+    display: table;
+}
+div.table .file-row {
+    display: table-row;
+}
+div.table .file-row > div {
+    display: table-cell;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+    padding: 8px;
+}
+
+div.table .file-row div:last-child
+{
+    text-align: center;
+}
+
+div.table .file-row:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+
+
+/* The total progress gets shown by event listeners */
+#total-progress {
+    opacity: 0;
+    transition: opacity 0.3s linear;
+}
+
+/* Hide the progress bar when finished */
+#previews .file-row.dz-success .progress {
+    opacity: 0;
+    transition: opacity 0.3s linear;
+}
+
+/* Hide the delete button initially */
+#previews .file-row .delete {
+    display: none;
+}
+
+/* Hide the start and cancel buttons and show the delete button */
+
+#previews .file-row.dz-success .start,
+#previews .file-row.dz-success .cancel {
+    display: none;
+}
+#previews .file-row.dz-success .delete {
+    display: block;
+}
+
+#alert
+{
+    width: 40%;
+    border-radius: 7px;
+    border: 4px solid grey;
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    background-color: white;
+    padding: 15px;
+    text-align: center;
+    z-index: 999;
+    display: none;
+    font-weight: bold;
+    font-size: 13pt;
+}
+
+#alert a
+{
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+div#actions
+{
+    text-align: center;
+}
+
+div.result
+{
+    width: 200px; 
+    padding: 5px;
+    border: 1px solid lightgrey;
+    box-shadow: 3px 3px 3px grey;
+    float: left;
+    margin-right: 85px;
+    margin-bottom: 50px;
+}
+
+div.images img
+{
+    width: 190px;
+    padding-bottom: 5px;
+}
+
+.detail .images img
+{
+    width: 300px;
+}
+
+.detail .images
+{
+    float: left;
+    width: 300px;   
+}
+
+div.metadata
+{
+
+}
+
+.detail .metadata
+{
+  float: left;
+  width: 760px;
+  font-size: 14pt;
+  line-height: 200%;
+  padding: 20px;
+}
+
+div#header
+{
+   background: rgba(13,75,145,1);
+    background: -moz-linear-gradient(top, rgba(13,75,145,1) 0%, rgba(10,51,99,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(13,75,145,1)), color-stop(100%, rgba(10,51,99,1)));
+    background: -webkit-linear-gradient(top, rgba(13,75,145,1) 0%, rgba(10,51,99,1) 100%);
+    background: -o-linear-gradient(top, rgba(13,75,145,1) 0%, rgba(10,51,99,1) 100%);
+    background: -ms-linear-gradient(top, rgba(13,75,145,1) 0%, rgba(10,51,99,1) 100%);
+    background: linear-gradient(to bottom, rgba(13,75,145,1) 0%, rgba(10,51,99,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d4b91', endColorstr='#0a3363', GradientType=0 );
+    color: white;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+div#header h1
+{
+    font-family: 'YaleBold';
+    font-weight: normal;
+}
+
+
+
+div#nav ul
+{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+div#nav ul li 
+{
+    display: inline;
+    padding-right: 25px;
+    font-size: 14pt;
+
+}
+
+div#nav ul li a
+{
+    font-weight: normal;
+    font-family: verdana;
+    color: white;
+}
+
+div#nav ul li:hover a
+{
+    background-color: transparent;
+}
+
+.instructions
+{
+    text-align: center;
+    padding: 50px;
+}

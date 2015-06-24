@@ -5,23 +5,19 @@ Rails.application.routes.draw do
   resources :multi_spectral_profiles
   resources :multispec, only: [:create]
 
-  #root 'multi_spec_samples#index'
-  #root 'multi_spectral_samples#upload_samples_dropzone'
-  #root 'upload#upload'
-  root 'upload#upload_samples_dropzone'
+  root 'browse#index'
 
-  get '/index' => 'upload#index'
+  get '/home' => 'browse#index'
+  get '/index' => 'browse#index'
   get '/upload' => 'upload#upload'
-  get '/select' => 'upload#upload'
-  get '/continue' => 'browse#continue'
+  get '/upload/detail' => 'upload#detail'
   get '/browse' => 'browse#browse'
+  get '/continue' => 'upload#continue'
 
   post '/index' => 'upload#index'
   post 'uploadFile' => 'upload#uploadFile'
   post '/uploadFile' => 'upload#uploadFile'
-  post '/continue' => 'browse#continue'
-  #get 'uploadFile' => 'upload#uploadFile'
-  #get '/uploadFile' => 'upload#uploadFile'
+  post '/continue' => 'upload#continue'
 
   #post 'multi_spec_samples/file_upload' => 'multi_spec_samples#file_upload'
   # get 'upload/exr/:id' => 'upload#receive_exr_file'

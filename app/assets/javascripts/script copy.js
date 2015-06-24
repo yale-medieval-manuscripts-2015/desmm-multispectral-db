@@ -20,7 +20,7 @@ document.querySelector("#continueForm").appendChild(uuidInput2);
 
 
 var myDropzone = new Dropzone(document.querySelector("#myDropzone"), {
-    url: "/uploadFile", // Set the url
+    url: "#", // Set the url
     thumbnailWidth: 80,
     thumbnailHeight: 80,
     parallelUploads: 20,
@@ -122,3 +122,4 @@ function guid() {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
         s4() + '-' + s4() + s4() + s4();
 }
+;

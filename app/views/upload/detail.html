@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Multispectral Image Data Browser</title>
+		
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="css/style.css"> 
+	
+	</head>
+
+	<body>
+	    <div id="header">
+	        <div class="container">  
+	            <h1>Multispectral Image Data Browser</h1>
+	            <div id="nav">
+	                <ul>
+	                    <li><a href="../browse/index.html">Home</a></li>
+	                    <li><a href="upload.erb">Upload</a></li>
+	                    <li><a href="../browse/browse.html">Browse</a></li>
+	                </ul>
+	            </div>
+	        </div>
+	    </div>
+		<div class="container detail">
+	        <div class="images">
+	            <div class="thumb">        
+	                <!--<img src="assets/thumb1.png" alt="Wheres_my_image?">-->
+                    <%= render_jpeg_via_IIIF (@sample) %>
+	            </div>
+	            <div class="barchart">
+	                <!--<img src="assets/bar1.png" alt="Wheres_my_barchart?">-->
+                    <%= render_barchart(@sample) %>
+	            </div>
+       		</div>
+       		<div class="metadata">
+                <strong>Manifest: 	</strong><a href="<%=@sample.manifest %>"><%=@sample.manifest %></a> <br>
+                <strong>Canvas: 	</strong><%=@sample.canvas %><br>
+                <strong>PNG file: 	</strong><%= @sample.multispectral_barchart.barchart_png_filename  %> <br>
+                <strong>Coordinates:</strong><%=@sample.x%>, <%=@sample.y%><br>
+                <strong>Created By:	</strong><%= @sample.user %><br>
+                <% date = @sample.created_at
+                   date = @sample.updated_at if @sample.updated_at > @sample.created_at %>
+                <strong>Date:		</strong><%= l date, :format => :long %> <br>
+                <strong>Comments:	</strong><%=@sample.comment%>
+            </div>
+		</div>
+	</body>
+</html>
