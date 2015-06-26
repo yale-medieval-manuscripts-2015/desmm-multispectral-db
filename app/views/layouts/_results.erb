@@ -1,7 +1,8 @@
 <div class="container">
     <h3>Search/Upload Results</h3>
     <% @batch_samples.each do |sample| %>
-        <a href="../upload/detail?sampleId=<%=sample.id%>"/>
+        <!--<a href="../upload/detail?sampleId=<%=sample.id%>"/>-->
+        <a href="/detail?sampleId=<%=sample.id%>"/>
         <div class="result">
             <div class="images">
                 <div class="thumb">

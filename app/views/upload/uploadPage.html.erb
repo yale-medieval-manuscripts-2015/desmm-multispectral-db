@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Multispectral Image Data Browser</title>
+		
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="assets/style.css">
+	</head>
+
+	<body>
+    <div id="header">
+        <div class="container">  
+            <h1>Multispectral Image Data Browser</h1>
+            <div id="nav">
+                <ul>
+                    <li><a href="index">Home</a></li>
+                    <li><a href="upload">Upload</a></li>
+                    <li><a href="browse">Browse</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+	<div class="container">
+		<form action="#" id="myDropzone">
+			<h4 class="instructions">Drag files on to this page to upload or use the controls below</h4>
+			<div id="alert">	
+				Files must be uploaded in pairs: one .MSA file and one .PNG, each with the same name. Please review your files and try again. 
+				<br><br><br>
+				<a href="#" onclick="hideAlert();">Close</a>
+			</div>
+			<div class="table table-striped" class="files" id="previews">
+			 
+			  <div id="template" class="file-row">
+			    <!-- This is used as the file preview template -->
+			    <div>
+			        <span class="preview"><img data-dz-thumbnail /></span>
+			    </div>
+			    <div>
+			        <p class="name" data-dz-name></p>
+			        <strong class="error text-danger" data-dz-errormessage></strong>
+			    </div>
+			    <div>
+			        <p class="size" data-dz-size></p>
+			        <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+			          <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+			        </div>
+			    </div>
+			        <div>
+			      <button data-dz-remove class="btn btn-danger cancel">
+			          <i class="glyphicon glyphicon-ban-circle"></i>
+			          <span>Remove</span>
+			      </button>
+			    </div>
+			  </div>
+			</div>
+		</form>
+			<div id="actions" class="row">
+
+		      <div class="col-lg-12">
+		        <!-- The fileinput-button span is used to style the file input field as button -->
+		        <span class="btn btn-warning fileinput-button dz-clickable">
+		            <i class="glyphicon glyphicon-plus"></i>
+		            <span>Add files...</span>
+		        </span>
+		        <button type="button " class="btn btn-primary start">
+		            <i class="glyphicon glyphicon-upload"></i>
+		            <span>Start upload</span>
+		        </button>
+		        <button type="reset" class="btn btn-danger cancel">
+		            <i class="glyphicon glyphicon-ban-circle"></i>
+		            <span>Clear Uploads</span>
+		        </button>
+		        <button type="reset" disabled="disabled" class="btn btn-success continue">
+		            <i class="glyphicon glyphicon-arrow-right"></i>
+		            <span>Continue</span>
+		        </button>
+		      </div>
+
+		      <div class="col-lg-5">
+		        <!-- The global file processing state -->
+		        <span class="fileupload-process">
+		          <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="opacity: 0;">
+		            <div class="progress-bar progress-bar-success" style="width: 100%;" data-dz-uploadprogress=""></div>
+		          </div>
+		        </span>
+			</div>				
+	    </div>
+	</form>
+	<form method="post" action="continue" id="continueForm"> </form>
+
+	</div>
+	<script type="text/javascript" src="assets/dropzone.js"></script>
+	<script type="text/javascript" src="assets/script.js"></script>
+	</body>
+</html>

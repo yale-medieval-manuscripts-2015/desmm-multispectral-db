@@ -9,12 +9,16 @@ Rails.application.routes.draw do
 
   get '/home' => 'browse#index'
   get '/index' => 'browse#index'
-  get '/upload' => 'upload#upload'
-  get '/upload/detail' => 'upload#detail'
+  get '/upload' => 'upload#uploadPage'
   get '/browse' => 'browse#browse'
   get '/continue' => 'upload#continue'
+  get '/detail' => 'upload#detail'
 
-  post '/index' => 'upload#index'
+  #get 'index' => 'browse#index'
+  #get 'upload' => 'upload#uploadPage'
+  #get 'browse' => 'browse#browse'
+
+  post '/index' => 'browse#index'
   post 'uploadFile' => 'upload#uploadFile'
   post '/uploadFile' => 'upload#uploadFile'
   post '/continue' => 'upload#continue'

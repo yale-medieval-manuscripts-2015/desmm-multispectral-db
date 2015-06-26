@@ -9,6 +9,11 @@ class UploadController < ApplicationController
     #render :file => 'app\views\upload\index.html.erb'
   end
 
+  def uploadPage
+    p 'uploadPage method'
+    #render :file => 'app\views\upload\uploadPage.html.erb'
+  end
+
   def uploadFile
     p 'In uploadController#uploadFile'
 
@@ -40,7 +45,7 @@ class UploadController < ApplicationController
     p 'All done with ' + @file_name
     p 'current_user = ' + current_user.uid
 
-    #render :text => "File has been uploaded successfully"
+    render :text => "File has been uploaded successfully"
     #respond_to do |format|
       #format.html {redirect_to 'multi_spectral_samples#index'}
       #format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
