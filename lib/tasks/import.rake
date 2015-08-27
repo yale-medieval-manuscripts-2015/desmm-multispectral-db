@@ -18,6 +18,11 @@ namespace :import do
     end
   end
 
+  desc "clears user data"
+  task :clear_users => :environment do
+    User.destroy_all
+  end
+
   desc "imports canvas_lookup data from a csv file"
   task :canvas_lookups => :environment do
     require 'csv'
@@ -32,4 +37,7 @@ namespace :import do
 
     end
   end
+
+
+
 end
