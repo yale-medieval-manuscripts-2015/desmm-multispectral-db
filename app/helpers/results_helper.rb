@@ -9,7 +9,6 @@ module ResultsHelper
     encoded_string = Base64.encode64(thumbnail)
     src = "data:image/png;base64," + encoded_string
     html = "<img src='#{src}' alt='Wheres_my_image?'></img>"
-    p html
     html.html_safe
   end
 

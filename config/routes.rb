@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
 
-  mount Commontator::Engine => '/commontator'
-
   resources :multi_spectral_profiles
   resources :multispec, only: [:create]
 

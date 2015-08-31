@@ -41,21 +41,6 @@ class MultiSpectralSamplesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /multi_spectral_samples/1
-  # PATCH/PUT /multi_spectral_samples/1.json
-=begin
-  def update
-    respond_to do |format|
-      if @multi_spectral_sample.update(multi_spectral_sample_params)
-        format.html { redirect_to @multi_spectral_sample, notice: 'Multi spec sample was successfully updated.' }
-        format.json { render :show, status: :ok, location: @multi_spectral_sample }
-      else
-        format.html { render :edit }
-        format.json { render json: @multi_spectral_sample.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-=end
 
   # DELETE /multi_spectral_samples/1
   # DELETE /multi_spectral_samples/1.json

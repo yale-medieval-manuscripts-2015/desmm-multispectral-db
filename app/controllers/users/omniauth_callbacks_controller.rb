@@ -16,8 +16,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       #  )
       # end
 
-p "user: #{uid}"
-
        if !@user.nil?
          sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
          set_flash_message(:notice, :success, :kind => "CAS") if is_navigational_format?

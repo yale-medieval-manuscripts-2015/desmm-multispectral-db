@@ -43,6 +43,9 @@
                    date = @sample.updated_at if @sample.updated_at > @sample.created_at %>
                 <strong>Date:		</strong><%= l date, :format => :long %> <br>
                 <strong>Comments:	</strong><%=@sample.comment%>
+
+                <%#= commontator_thread(@sample) %>
+
             </div>
 		</div>
 	</body>

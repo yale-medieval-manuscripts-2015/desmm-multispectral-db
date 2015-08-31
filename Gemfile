@@ -70,6 +70,9 @@ gem 'protected_attributes'
 
 gem 'simplecov', :require => false, :group => :test
 
+#gem 'commontator', '~> 4.10.0'
+#gem 'commontator', :path => "~/rails_projects/commontator/"
+
 #gem 'arel', '6.0.0.beta2'
 
 # Use Capistrano for deployment

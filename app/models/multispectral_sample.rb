@@ -1,4 +1,5 @@
 class MultispectralSample < ActiveRecord::Base
+
   has_many :multispectral_values
   has_many :multispectral_tags
   has_one :multispectral_barchart

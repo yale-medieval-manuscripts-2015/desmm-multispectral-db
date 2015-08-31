@@ -42,16 +42,16 @@ RSpec.describe UploadController, :type => :controller do
     end
 
     it "creates a new MultispectralSample" do
-      expect {mapHyper3dJsonToModel @msaJsonString}.to change(MultispectralSample, :count).by(1)
+      expect {mapHyper3dJsonToModel @msaJsonString,'1'}.to change(MultispectralSample, :count).by(1)
     end
     it "creates a new BarChart" do
-      expect {mapHyper3dJsonToModel @msaJsonString}.to change(MultispectralBarchart, :count).by(1)
+      expect {mapHyper3dJsonToModel @msaJsonString,1}.to change(MultispectralBarchart, :count).by(1)
     end
     it "creates 8 new MultiSpecValue" do
-      expect {mapHyper3dJsonToModel @msaJsonString}.to change(MultispectralValue, :count).by(8)
+      expect {mapHyper3dJsonToModel @msaJsonString,1}.to change(MultispectralValue, :count).by(8)
     end
     it "changes the count of MultipecTags" do
-      expect {mapHyper3dJsonToModel @msaJsonString}.to change(MultispectralTag, :count)
+      expect {mapHyper3dJsonToModel @msaJsonString,1}.to change(MultispectralTag, :count)
     end
   end
 

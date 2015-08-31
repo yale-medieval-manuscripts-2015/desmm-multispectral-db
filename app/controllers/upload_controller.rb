@@ -10,22 +10,18 @@ class UploadController < ApplicationController
   end
 
   def uploadPage
-    p 'uploadPage method'
     #render :file => 'app\views\upload\uploadPage.html.erb'
   end
 
   def uploadFile
-    p 'In uploadController#uploadFile'
 
     batch_id = params["batchId"]
     #batch_id = '1' # temporary
-    p 'batch_id = ' + batch_id.to_s
 
     #@content_type = params[:upload]['datafile'].content_type
     #@file_name = params[:upload]['datafile'].original_filename
     @content_type = params['file'].content_type
     @file_name = params['file'].original_filename
-    p 'params inspect: ' + params.inspect
 
     if @content_type ==  'image/png'
       p 'png'
@@ -42,7 +38,7 @@ class UploadController < ApplicationController
         mapHyper3dJsonToModel upload_data, batch_id
     end
 
-    p 'All done with ' + @file_name
+    p 'Done with ' + @file_name
     p 'current_user = ' + current_user.uid
 
     render :text => "File has been uploaded successfully"
@@ -55,9 +51,7 @@ class UploadController < ApplicationController
 
   def continue
     batch_id = params["batchId"]
-    #p 'batch_id = ' + batch_id.to_s
     @batch_samples =  MultispectralSample.where(batch_id: batch_id)
-    #p 'sample count = ' + @batch_samples.count.to_s
   end
 
   def detail
@@ -66,6 +60,6 @@ class UploadController < ApplicationController
     p 'sample_id = ' + sample_id.to_s
     @sample =  MultispectralSample.where(id: sample_id).first
     @sample.multispectral_sample_semantic_id
-    p 'in detail controller method: sample.id = ' + @sample.multispectral_sample_semantic_id
+    #p 'in detail controller method: sample.id = ' + @sample.multispectral_sample_semantic_id
   end
   end
