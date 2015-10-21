@@ -16,10 +16,6 @@ class UploadController < ApplicationController
   def uploadFile
 
     batch_id = params["batchId"]
-    #batch_id = '1' # temporary
-
-    #@content_type = params[:upload]['datafile'].content_type
-    #@file_name = params[:upload]['datafile'].original_filename
     @content_type = params['file'].content_type
     @file_name = params['file'].original_filename
 

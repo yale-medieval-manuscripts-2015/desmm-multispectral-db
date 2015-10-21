@@ -12,7 +12,7 @@ module Hyper3dJson
     ms_json = JSON.parse(ms_json_str)
     msh = Hash.new
 
-    # build sample record
+    # build record for the sample
     msh['multispectral_sample_semantic_id'] = ms_json['originalImage'] + '_' + ms_json['sampleLocation']['x' ].to_s + '_' + ms_json['sampleLocation']['y' ].to_s
     sample = check_sample_exists msh['multispectral_sample_semantic_id']
     sample.multispectral_barchart.destroy if !sample.nil?

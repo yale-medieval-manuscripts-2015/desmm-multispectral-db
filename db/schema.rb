@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728175242) do
+ActiveRecord::Schema.define(version: 20151005201541) do
 
   create_table "canvas_lookups", force: :cascade do |t|
     t.string   "canvas_id"

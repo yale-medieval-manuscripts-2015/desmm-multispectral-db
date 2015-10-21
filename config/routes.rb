@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount Commontator::Engine => '/commontator'
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
 
   resources :multi_spectral_profiles
@@ -14,10 +16,7 @@ Rails.application.routes.draw do
   get '/continue' => 'upload#continue'
   get '/detail' => 'upload#detail'
   get '/upload/detail' => 'upload#detail'
-
-  #get 'index' => 'browse#index'
-  #get 'upload' => 'upload#uploadPage'
-  #get 'browse' => 'browse#browse'
+  get '/about', :to => redirect('/about.html')
 
   post '/index' => 'browse#index'
   post 'uploadFile' => 'upload#uploadFile'
@@ -37,6 +36,7 @@ Rails.application.routes.draw do
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  #get '/detail' => 'upload#detail', as: multispectral_sample_path
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
