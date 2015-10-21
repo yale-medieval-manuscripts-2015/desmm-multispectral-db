@@ -2,11 +2,6 @@
 <html>
 	<head>
 		<title>Multispectral Image Data Browser</title>
-		
-		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="css/style.css"> 
-	
 	</head>
 
 	<body>
@@ -22,6 +17,7 @@
 	            </div>
 	        </div>
 	    </div>
+
 		<div class="container detail">
 	        <div class="images">
 	            <div class="thumb">        
@@ -44,7 +40,7 @@
                 <strong>Date:		</strong><%= l date, :format => :long %> <br>
                 <strong>Comments:	</strong><%=@sample.comment%>
 
-                <%#= commontator_thread(@sample) %>
+                <%= commontator_thread(@sample) %>
 
             </div>
 		</div>

@@ -4,6 +4,8 @@ class MultispectralSample < ActiveRecord::Base
   has_many :multispectral_tags
   has_one :multispectral_barchart
 
+  acts_as_commontable
+
   accepts_nested_attributes_for :multispectral_values
   accepts_nested_attributes_for :multispectral_tags
   accepts_nested_attributes_for :multispectral_barchart

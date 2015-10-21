@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="assets/style.css">
-
         <link rel="stylesheet" href="assets/bootstrap.css">
         <link rel="stylesheet" href="assets/bootstrap-theme.css">
         <link rel="stylesheet" href="assets/style.css">
@@ -21,6 +20,7 @@
         <link rel="stylesheet" media="all" href="assets/application.css" data-turbolinks-track="true">
         <link rel="stylesheet" media="all" href="assets/dropzone_002.css" data-turbolinks-track="true">
         <link rel="stylesheet" media="all" href="assets/bootstrap_002.css" data-turbolinks-track="true">
+
         <script src="assets/jquery.js" data-turbolinks-track="true"></script>
         <script src="assets/jquery_ujs.js" data-turbolinks-track="true"></script>
         <script src="assets/turbolinks.js" data-turbolinks-track="true"></script>
@@ -33,15 +33,64 @@
         <script src="assets/upload.js" data-turbolinks-track="true"></script>
         <script src="assets/bootstrap.js" data-turbolinks-track="true"></script>
         <script src="assets/application.js" data-turbolinks-track="true"></script>
+
         <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
         <%= csrf_meta_tags %>
         <meta name="csrf-param" content="authenticity_token">
         <meta name="csrf-token" content="4FMWBGuqnGvWvXIafWLm8GIXjYBGrfPVXk8WnorDw0YKz4pGer7qypcp7PBLBEhKrqS+y0+iJI2nCiUEK9B7ew==">
     </head>
+
     <body>
-        <!--<p class="notice"><%#= notice %></p>
-        <p class="alert"><%#= alert %></p>-->
+    <%#= p "current_usr: #{current_user.uid}" %>
+    <%#= p "user_signed_in: #{user_signed_in?}" %>
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle collapsed" aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Multispectral Image Tool</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="upload">Upload Image</a>
+                        </li>
+                        <li>
+                            <a href="browse">Browse/Search</a>
+                        </li>
+                        <li>
+                            <a href="about">About</a>
+                        </li>
+                    </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <% if user_signed_in? %>
+                                <li>
+                                    <a href="/orbitweb/contactus"><%= current_user.uid %></a>
+                                </li>
+                                <li>
+                                    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+                                </li>
+                            <% else %>
+                                <li>
+                                    <%= link_to('Login', new_user_session_path)  %>
+                                </li>
+                            <% end %>
+                            <li>
+                                <a href="/orbitweb/contactus">Contact Us</a>
+                            </li>
+                        </ul>
+
+                </div>
+            </div>
+        </nav>
+
         <%= yield %>
+
     </body>
 </html>
