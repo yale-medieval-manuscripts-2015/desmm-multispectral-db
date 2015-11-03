@@ -4,24 +4,28 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
 
+
   resources :multi_spectral_profiles
   resources :multispec, only: [:create]
 
-  root 'browse#index'
+  root 'discover#index'
 
   get '/home' => 'browse#index'
   get '/index' => 'browse#index'
   get '/upload' => 'upload#uploadPage'
-  get '/browse' => 'browse#browse'
+  get '/discover' => 'discover#browse'
+  get '/search' => 'discover#search'
   get '/continue' => 'upload#continue'
   get '/detail' => 'upload#detail'
   get '/upload/detail' => 'upload#detail'
-  get '/about', :to => redirect('/about.html')
+  get '/about' => 'support_pages#about'
+  get '/contactus' => 'support_pages#contact_us'
 
-  post '/index' => 'browse#index'
+  post '/index' => 'discover#index'
   post 'uploadFile' => 'upload#uploadFile'
   post '/uploadFile' => 'upload#uploadFile'
   post '/continue' => 'upload#continue'
+  post '/respond_to_search' => 'discover#respond_to_search'
 
   #post 'multi_spec_samples/file_upload' => 'multi_spec_samples#file_upload'
   # get 'upload/exr/:id' => 'upload#receive_exr_file'

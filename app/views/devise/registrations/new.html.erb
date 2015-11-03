@@ -11,10 +11,14 @@
   </div>
 
   <div class="field">
+      <% p 'minimum password length = ' + @minimum_password_length.to_s %>
     <%= f.label :password %>
+
     <% if @validatable %>
+          <% p '@validatable: minimum password length = ' + @minimum_password_length.to_s %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
+
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
@@ -23,7 +27,11 @@
     <%#= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+
+
+
   <div class="actions">
+      <% p 'password = ' + :password.to_s  %>
     <%= f.submit "Sign up" %>
   </div>
 <% end %>

@@ -21,7 +21,7 @@
         <link rel="stylesheet" media="all" href="assets/dropzone_002.css" data-turbolinks-track="true">
         <link rel="stylesheet" media="all" href="assets/bootstrap_002.css" data-turbolinks-track="true">
 
-        <script src="assets/jquery.js" data-turbolinks-track="true"></script>
+        <!--<script src="assets/jquery.js" data-turbolinks-track="true"></script>
         <script src="assets/jquery_ujs.js" data-turbolinks-track="true"></script>
         <script src="assets/turbolinks.js" data-turbolinks-track="true"></script>
         <script src="assets/activities.js" data-turbolinks-track="true"></script>
@@ -32,7 +32,7 @@
         <script src="assets/script.js" data-turbolinks-track="true"></script>
         <script src="assets/upload.js" data-turbolinks-track="true"></script>
         <script src="assets/bootstrap.js" data-turbolinks-track="true"></script>
-        <script src="assets/application.js" data-turbolinks-track="true"></script>
+        <script src="assets/application.js" data-turbolinks-track="true"></script>-->
 
         <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -57,34 +57,37 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>
-                            <a href="upload">Upload Image</a>
-                        </li>
-                        <li>
-                            <a href="browse">Browse/Search</a>
-                        </li>
+                        <% if user_signed_in? %>
+                            <li>
+                                <a href="upload">Upload Image</a>
+                            </li>
+                            <li>
+                                <!--<a href="discover">Browse/Search</a>-->
+                                <a href="search">Browse/Search</a>
+                            </li>
+                        <% end %>
                         <li>
                             <a href="about">About</a>
                         </li>
                     </ul>
 
-                        <ul class="nav navbar-nav navbar-right">
-                            <% if user_signed_in? %>
-                                <li>
-                                    <a href="/orbitweb/contactus"><%= current_user.uid %></a>
-                                </li>
-                                <li>
-                                    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-                                </li>
-                            <% else %>
-                                <li>
-                                    <%= link_to('Login', new_user_session_path)  %>
-                                </li>
-                            <% end %>
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if user_signed_in? %>
                             <li>
-                                <a href="/orbitweb/contactus">Contact Us</a>
+                                <a href="#"><%= current_user.uid %></a>
                             </li>
-                        </ul>
+                            <li>
+                                <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+                            </li>
+                        <% else %>
+                            <li>
+                                <%= link_to('Login', new_user_session_path)  %>
+                            </li>
+                        <% end %>
+                        <li>
+                            <a href="/contactus">Contact Us</a>
+                        </li>
+                    </ul>
 
                 </div>
             </div>

@@ -3,6 +3,10 @@ include Hyper3dJson
 
 class UploadController < ApplicationController
   respond_to :html, :json
+  before_action :authenticate_user!
+
+  p ' in upload controller'
+
   def index
     p 'index method'
     #render :file => 'app\views\upload\uploadfile.rhtml'
@@ -14,8 +18,14 @@ class UploadController < ApplicationController
   end
 
   def uploadFile
-
+    p "controller: params = #{params.inspect}"
     batch_id = params["batchId"]
+
+    #p 'controller: params["file"] = ' + params['file'].to_s
+    #p 'controller: params["file"].content_type= ' + params['file'].content_type.to_s
+    #p 'controller: params["file"].original_filename= ' + params['file'].original_filename.to_s
+
+
     @content_type = params['file'].content_type
     @file_name = params['file'].original_filename
 
@@ -35,7 +45,7 @@ class UploadController < ApplicationController
     end
 
     p 'Done with ' + @file_name
-    p 'current_user = ' + current_user.uid
+    #p 'current_user = ' + current_user.uid
 
     render :text => "File has been uploaded successfully"
     #respond_to do |format|
@@ -47,13 +57,13 @@ class UploadController < ApplicationController
 
   def continue
     batch_id = params["batchId"]
-    @batch_samples =  MultispectralSample.where(batch_id: batch_id)
+    @samples =  MultispectralSample.where(batch_id: batch_id)
   end
 
   def detail
     # the front-end needs to send the sample id for the detail page
     sample_id = params["sampleId"]
-    p 'sample_id = ' + sample_id.to_s
+    #p 'sample_id = ' + sample_id.to_s
     @sample =  MultispectralSample.where(id: sample_id).first
     @sample.multispectral_sample_semantic_id
     #p 'in detail controller method: sample.id = ' + @sample.multispectral_sample_semantic_id
