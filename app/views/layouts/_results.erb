@@ -1,24 +1,24 @@
 <div class="container">
     <h3>Search/Upload Results</h3>
-    <% @batch_samples.each do |sample| %>
-        <!--<a href="../upload/detail?sampleId=<%=sample.id%>"/>-->
-        <a href="/detail?sampleId=<%=sample.id%>"/>
+    <% @samples.each do |sample| %>
+        <!--<a href="/detail?sampleId=<%#=sample.id%>"/>-->
         <div class="result">
-            <div class="images">
-                <div class="thumb">
-                    <%= render_jpeg_via_IIIF (sample) %>
+            <a href="/detail?sampleId=<%=sample.id%>">
+                <div class="images">
+                    <div class="thumb">
+                        <%= render_jpeg_via_IIIF (sample) %>
+                    </div>
+                    <div class="barchart">
+                        <%= render_barchart(sample) %>
+                    </div>
                 </div>
-                <div class="barchart">
-                    <%= render_barchart(sample) %>
+                <div class="metadata">
+                    <b>Creator:</b> <%= sample.user %><br>
+                    <% date = sample.created_at
+                       date = sample.updated_at if sample.updated_at > sample.created_at %>
+                    <b>Date:</b><%= l date, :format => :long %><br>
                 </div>
-            </div>
-            <div class="metadata">
-                <b>Creator:</b> <%= sample.user %><br>
-                <% date = sample.created_at
-                   date = sample.updated_at if sample.updated_at > sample.created_at %>
-                <b>Date:</b><%= l date, :format => :long %><br>
-            </div>
-
+            </a>
             <!--<div class= "metadata">
                 <strong>Barchart Filename: </strong> <%#= sample.multispectral_barchart.barchart_png_filename %>
             </div>-->

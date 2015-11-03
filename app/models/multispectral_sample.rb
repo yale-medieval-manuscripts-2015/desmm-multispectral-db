@@ -37,4 +37,32 @@ class MultispectralSample < ActiveRecord::Base
                   :md_material,
                   :md_language,
                   :batch_id
+
+  def self.get_manifests_for_select
+=begin
+    @samples = MultispectralSample.all
+    select_options = Array.new
+    @samples.each do |sample|
+      manifest_element = Array.new
+      manifest_element[0] = sample.manifest
+      manifest_element[1] = sample.manifest
+      p 'manifest_element[0] = ' + manifest_element[0].to_s
+      select_options.push(manifest_element)
+    end
+    p "select_options = #{select_options.inspect}"
+    select_options
+=end
+
+    @samples = MultispectralSample.all
+    @samples = MultispectralSample.select(:manifest).distinct
+    select_options = Array.new
+    @samples.each do |sample|
+      manifest_element = Array.new
+      manifest_element[0] = sample.manifest
+      manifest_element[1] = sample.manifest
+      select_options.push(manifest_element)
+    end
+    select_options
+  end
+
 end

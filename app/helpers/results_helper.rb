@@ -13,9 +13,16 @@ module ResultsHelper
   end
 
   def render_barchart (sample)
-    encoded_string = Base64.encode64(sample.multispectral_barchart.barchart_png_image)
+    if !sample.multispectral_barchart.nil?
+      barchart_image = sample.multispectral_barchart.barchart_png_image
+    else
+      barchart = MultispectralBarchart.find_by_barchart_png_filename("blank_barchart.png")
+      barchart_image =barchart.barchart_png_image
+    end
+
+    encoded_string = Base64.encode64(barchart_image)
     src = "data:image/png;base64," + encoded_string
-    html = "<img src='#{src}' alt='Wheres_my_barchart?'></img>"
+    html = "<img src='#{src}' alt=''></img>"
     html.html_safe
   end
 

@@ -48,6 +48,7 @@ module IIIF_and_Tags
     tag_surround_h = MultispectralConfig.get("tag_surround_h")
     annotationListUrl += x.to_s + ',' + y.to_s + ',12000,12000'
     #annotationListUrl += x.to_s + ',' + y.to_s + ',#' + tag_surround_w + ',' + tag_surround_h + "'"
+    p 'annotationListUrl = ' + annotationListUrl
     jsonAnnotationList = JSON.parse(open(annotationListUrl).read)
     jsonResources = jsonAnnotationList['resources'] # Returns array
   end
@@ -60,6 +61,7 @@ module IIIF_and_Tags
       terms = chars.split(' ')
       terms.each do |term|
         tagSet.add term if term.start_with?('#')
+        p "createTagSet: #{term}"
       end
     end
     tagSet

@@ -18,9 +18,11 @@ module Hyper3dJson
     sample.multispectral_barchart.destroy if !sample.nil?
     sample.destroy if !sample.nil?
     #msh['user'] =  current_user.uid
-    msh['user'] =  current_user.name
+    #if !current_user.nil?
+    #  msh['user'] = current_user.name
+    #end
     msh['batch_id'] = batch_id.to_s
-    p '************ batch_id written: ' + msh['batch_id']
+    #p '************ batch_id written: ' + msh['batch_id']
     msh['manifest'] = 'manifest to be named later'
     msh['canvas'] = 'canvas to be named later'
     msh['x'] = ms_json['sampleLocation']['x']
@@ -89,7 +91,7 @@ module Hyper3dJson
       # get tag set from annotation list
       tagSet = createTagSet resources
 
-      # send tagset to TagManger.getAllSolrMappingsforTagSet and get all solr_mappings
+      # send tagset to TagMangaer.getAllSolrMappingsforTagSet and get all solr_mappings
       tagSetStr = tagSet.to_a.join(' ')
       tagSetStr.gsub!(/#/,'').gsub!(/\s/,"%20") unless tagSetStr.empty?
 
@@ -144,11 +146,11 @@ module Hyper3dJson
   end
 
   def check_barchart_exists filename
-    p 'barchart check: filename = ' + filename
+    #p 'barchart check: filename = ' + filename
     bar=MultispectralBarchart.find_by(barchart_png_filename:filename)
     #bar=MultispectralBarchart.where(:barchart_png_filename => filename)
-    p 'status = ' + bar.barchart_png_filename if !bar.nil?
-    p 'barchart check: ' + bar.nil?.to_s
+    #p 'status = ' + bar.barchart_png_filename if !bar.nil?
+    #p 'barchart check: ' + bar.nil?.to_s
     bar
   end
 end

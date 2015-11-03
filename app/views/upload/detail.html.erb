@@ -8,14 +8,7 @@
 	    <div id="header">
 	        <div class="container">  
 	            <h1>Multispectral Image Data Browser</h1>
-	            <div id="nav">
-	                <ul>
-	                    <li><a href="index">Home</a></li>
-	                    <li><a href="upload">Upload</a></li>
-	                    <li><a href="browse">Browse</a></li>
-	                </ul>
-	            </div>
-	        </div>
+            </div>
 	    </div>
 
 		<div class="container detail">
@@ -32,7 +25,9 @@
        		<div class="metadata">
                 <strong>Manifest: 	</strong><a href="<%=@sample.manifest %>"><%=@sample.manifest %></a> <br>
                 <strong>Canvas: 	</strong><%=@sample.canvas %><br>
-                <strong>PNG file: 	</strong><%= @sample.multispectral_barchart.barchart_png_filename  %> <br>
+                <% if !@sample.multispectral_barchart.nil? %>
+                    <strong>PNG file: 	</strong><%= @sample.multispectral_barchart.barchart_png_filename  %> <br>
+                <% end %>
                 <strong>Coordinates:</strong><%=@sample.x%>, <%=@sample.y%><br>
                 <strong>Created By:	</strong><%= @sample.user %><br>
                 <% date = @sample.created_at
