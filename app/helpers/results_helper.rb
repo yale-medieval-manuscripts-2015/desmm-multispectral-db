@@ -8,7 +8,7 @@ module ResultsHelper
     return if thumbnail.nil?
     encoded_string = Base64.encode64(thumbnail)
     src = "data:image/png;base64," + encoded_string
-    html = "<img src='#{src}' alt='Wheres_my_image?'></img>"
+    html = "<img src='#{src}' alt=''></img>"
     html.html_safe
   end
 

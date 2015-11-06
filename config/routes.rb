@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   post 'uploadFile' => 'upload#uploadFile'
   post '/uploadFile' => 'upload#uploadFile'
   post '/continue' => 'upload#continue'
-  post '/respond_to_search' => 'discover#respond_to_search'
+  post '/respond_to_search' => 'discover#respond_to_search', :defaults => { :format => 'js' }
 
   #post 'multi_spec_samples/file_upload' => 'multi_spec_samples#file_upload'
   # get 'upload/exr/:id' => 'upload#receive_exr_file'

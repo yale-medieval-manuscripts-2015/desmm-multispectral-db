@@ -2,7 +2,7 @@ require "Hyper3dJson.rb"
 include Hyper3dJson
 
 class DiscoverController < ApplicationController
-  respond_to :html, :json
+  respond_to :html, :json, :js
 
   def index
   end
@@ -13,11 +13,29 @@ class DiscoverController < ApplicationController
   end
 
   def respond_to_search
-    #:authenticate_user!
-    p "in browse#search! params = " + params.inspect
-    p "in browse#search! manifest = " + params["manifest"]
-    #@samples =  MultispectralSample.all
-    @samples =  MultispectralSample.where(manifest:params["manifest"])
+    p "params = #{params.inspect}"
+    :authenticate_user!
+    manifest_list = ''
+    tag_list = ''
+    params.each do |key, value|
+      if key.start_with?('manifest_')
+         manifest_list.concat('"').concat(value).concat('",')
+      end
+      if key.start_with?('tag_')
+        tag_list.concat('"').concat(value).concat('",')
+      end
+    end
+    manifest_list.chop!
+    tag_list.chop!
+
+    p "manifest_list = #{manifest_list}"
+    p "tag_list = #{tag_list}"
+
+    #@samples =  MultispectralSample.where("manifest in (#{manifest_list})")
+
+    #@samples =  MultispectralSample.where("id in (select multispectral_sample_id from 'multispectral_tags' where hash_tag in (#{tag_list}))")
+
+    @samples =  MultispectralSample.where("manifest in (#{manifest_list}) and id in (select multispectral_sample_id from multispectral_tags where hash_tag in (#{tag_list}))")
 
     respond_to do |format|
       format.js
