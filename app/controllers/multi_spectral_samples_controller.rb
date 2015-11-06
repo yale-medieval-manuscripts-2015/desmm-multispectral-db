@@ -63,13 +63,14 @@ class MultiSpectralSamplesController < ApplicationController
     params.require(:multi_spectral_sample).permit(:MultiSpectralSample_id, :manifest, :manifest, :canvas, :x, :y, :wavelength, :reflectance, :normalized, :creatingApplication, :creatingApplication, :comment, :exrFileName, :user, :profileID, :upload_status)
   end
 
-  def getTags(exrFileName)
+  # not used
+  #def getTags(exrFileName)
     # get manifestViaExrFileName
     # get manifest's annotation list
     # iterate thru annotations via annotation list
     # - if annotation encompasses sample (x,y) add to tag array
     # ?: do we want to get the solr mappings to use for search app?
-    tags = Array.new
-    tags = ['#adam', 'eve', '#adamandeve']
-  end
+    #tags = Array.new
+    #tags = ['#adam', 'eve', '#adamandeve']
+  #end
 end

@@ -89,7 +89,7 @@ module Hyper3dJson
       resources = getAnnotationList canvasId, multispec_sample.x, multispec_sample.y  #array of annotationList resource elements
 
       # get tag set from annotation list
-      tagSet = createTagSet resources
+      tagSet = createTagSet resources, multispec_sample.x, multispec_sample.y
 
       # send tagset to TagMangaer.getAllSolrMappingsforTagSet and get all solr_mappings
       tagSetStr = tagSet.to_a.join(' ')

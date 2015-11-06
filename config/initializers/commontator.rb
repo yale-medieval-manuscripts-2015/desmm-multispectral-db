@@ -12,7 +12,6 @@ Commontator.configure do |config|
   # Returns: the current user (acts_as_commontator)
   # The default works for Devise and similar authentication plugins
   # Default: lambda { |controller| controller.current_user }
-  p 'lambda - ' + lambda { |controller| controller.current_user }.to_s
   config.current_user_proc = lambda { |controller| controller.current_user }
 
   # javascript_proc
