@@ -144,6 +144,11 @@ div.metadata
   padding: 20px;
 }
 
+.detail .backlink
+{
+    float: left;
+    margin-left: 25px;
+}
 div#header
 {
    background: rgba(13,75,145,1);
@@ -199,3 +204,4 @@ div#nav ul li:hover a
     text-align: center;
     padding: 50px;
 }
+

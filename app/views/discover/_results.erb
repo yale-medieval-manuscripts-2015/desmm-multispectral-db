@@ -16,13 +16,9 @@
                     <b>Creator:</b> <%= sample.user %><br>
                     <% date = sample.created_at
                        date = sample.updated_at if sample.updated_at > sample.created_at %>
-                    <b>Date:</b><%= l date, :format => :long %><br>
+                    <b>Date: </b><%=date.strftime("%b %d, %Y") %><br>
                 </div>
             </a>
-            <!--<div class= "metadata">
-                <strong>Barchart Filename: </strong> <%#= sample.multispectral_barchart.barchart_png_filename %>
-            </div>-->
-
         </div>
     <% end %>
 </div>

@@ -5,20 +5,20 @@
 	</head>
 
 	<body>
-	    <div id="header">
+	    <!--<div id="header">
 	        <div class="container">  
 	            <h1>Multispectral Image Data Browser</h1>
             </div>
-	    </div>
+	    </div>-->
 
 		<div class="container detail">
 	        <div class="images">
 	            <div class="thumb">        
-	                <!--<img src="assets/thumb1.png" alt="Wheres_my_image?">-->
+	                <!--<img src="assets/thumb1.png" alt="">-->
                     <%= render_jpeg_via_IIIF (@sample) %>
 	            </div>
 	            <div class="barchart">
-	                <!--<img src="assets/bar1.png" alt="Wheres_my_barchart?">-->
+	                <!--<img src="assets/bar1.png" alt="">-->
                     <%= render_barchart(@sample) %>
 	            </div>
        		</div>
@@ -32,12 +32,15 @@
                 <strong>Created By:	</strong><%= @sample.user %><br>
                 <% date = @sample.created_at
                    date = @sample.updated_at if @sample.updated_at > @sample.created_at %>
-                <strong>Date:		</strong><%= l date, :format => :long %> <br>
-                <strong>Comments:	</strong><%=@sample.comment%>
-
+                <strong>Date:		</strong><%=date.strftime("%b %d, %Y") %> <br>
+                <strong>Comments:	</strong><%#=@sample.comment%>
                 <%= commontator_thread(@sample) %>
-
             </div>
-		</div>
+            <!-- two lines below lose params -->
+            <!--<div class="backlink"><#%= link_to "Back up to search", :back %></div>-->
+            <!--<div class="backlink"><%#= link_to "Back up to search",request.env["HTTP_REFERER"]%></div>-->
+            <div class="backlink"><a href="javascript:history.back()">Return To Search</a></div>
+        </div>
+
 	</body>
 </html>

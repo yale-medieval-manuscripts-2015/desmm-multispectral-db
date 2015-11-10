@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   get '/discover' => 'discover#browse'
   get '/search' => 'discover#search'
   get '/continue' => 'upload#continue'
-  get '/detail' => 'upload#detail'
-  get '/upload/detail' => 'upload#detail'
+  get '/detail' => 'discover#detail'
+  get '/discover/detail' => 'discover#detail'
   get '/about' => 'support_pages#about'
   get '/contactus' => 'support_pages#contact_us'
 
