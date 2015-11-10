@@ -15,7 +15,7 @@ module Hyper3dJson
     # build record for the sample
     msh['multispectral_sample_semantic_id'] = ms_json['originalImage'] + '_' + ms_json['sampleLocation']['x' ].to_s + '_' + ms_json['sampleLocation']['y' ].to_s
     sample = check_sample_exists msh['multispectral_sample_semantic_id']
-    sample.multispectral_barchart.destroy if !sample.nil?
+    sample.multispectral_barchart.destroy if !sample.nil? && !sample.multispectral_barchart.nil?
     sample.destroy if !sample.nil?
     #msh['user'] =  current_user.uid
     #if !current_user.nil?

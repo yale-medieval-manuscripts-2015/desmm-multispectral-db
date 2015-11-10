@@ -2,27 +2,29 @@ module SearchHelper
 
   def addManifestFilterOptions
     manifests = MultispectralSample.get_manifests
-    html = ''
+    html = '<fieldset>'
+    html += "<label style='padding-left:20px'><input type='checkbox' name='manifests' id='toggle_manifests' class='toggle_manifests'/>Select/Unselect all Manuscripts </label>"
     i = 0;
     manifests.each do |manifest|
-      #html += "<label><input type='checkbox' name='#{manifest[:manifest]}' value='#{manifest[:manifest]}' />#{manifest[:label]} </label>"
       i+= 1
       name = 'manifest_' + i.to_s
-      html += "<label style='padding-left:20px'><input type='checkbox' name='#{name}' value='#{manifest[:manifest]}' />#{manifest[:label]} </label>"
-
+      html += "<label style='padding-left:20px'><input type='checkbox' name='#{name}' id='#{name}' value='#{manifest[:manifest]}' />#{manifest[:label]} </label>"
     end
+    html += '</fieldset>'
     html.html_safe
   end
 
   def addTagFilterOptions
     tags = MultispectralTag.get_tags
-    html = ''
+    html = '<fieldset>'
+    html += "<label style='padding-left:8px'><input type='checkbox' name='tags' id='toggle_tags' class='toggle_tags'/>Select/Unselect all Tags </label><br>"
     i = 0;
     tags.each do |tag|
       i+= 1
       name = 'tag_' + i.to_s
-      html += "<label style='padding-left:20px'><input type='checkbox' name='#{name}' value='#{tag[:tag]}' />#{tag[:facet]} </label>"
+      html += "<label style='padding-left:8px'><input type='checkbox' name='#{name}' id='#{name}' value='#{tag[:tag]}' />#{tag[:facet]}</label><br>"
     end
+    html += '</fieldset>'
     html.html_safe
   end
 

@@ -1,21 +1,20 @@
-<container class = "col-md-4">
+<container>
+<div class = "col-md-3">
     <form action="respond_to_search" class="form-horizontal" role="form" data-remote = "true" method = "post">
         <div class="form-group" name=search-filters">
 
             <label class="control-label" style="padding-left:8px" for="manifest">Manuscripts:</label>
             <br>
-            <div id="manuscripts" class="col_md_3 pre-scrollable">
-                <container>
+            <div id="manuscripts" class="col_md_12 pre-scrollable">
                     <%= addManifestFilterOptions %>
-                </container>
             </div>
 
             <label class="control-label" style="padding-left:8px" for="tags">Tags:</label>
             <br>
-            <div id="tags" class="col_md_1 pre-scrollable">
-                <container class = "col-md-5">
-                    <%= addTagFilterOptions %>
-                </container>
+            <div id="tags" class="col-md-12 pre-scrollable">
+                <!--<container class = "col-md-5">-->
+                    <%= addTagFilterOptions%>
+                <!--</container>-->
             </div>
         </div>
         <br>
@@ -26,11 +25,12 @@
             </div>
         </div>
     </form>
-</container>
+</div>
 
-
-<container class = "col-md-8">
+<div class = "col-md-9">
     <div id="search_results">
         <!-- Contents will be filled via ajax results in respond_to_search.js -->
     </div>
+</div>
 </container>
+<script type="text/javascript" src="assets/search_helper.js"></script>
