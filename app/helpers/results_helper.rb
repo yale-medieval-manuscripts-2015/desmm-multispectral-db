@@ -4,8 +4,11 @@ include IIIF_and_Tags
 module ResultsHelper
 
   def render_jpeg_via_IIIF sample
+    src=''
+    #html = "<img src='#{src}' alt=''></img>"
+    return if sample.manifest == 'manifest to be named later'
     thumbnail = getCanvasImageDefault(sample.canvas, sample.x, sample.y, 0, 0)
-    return if thumbnail.nil?
+    return if thumbnail.nil? || thumbnail.empty?
     encoded_string = Base64.encode64(thumbnail)
     src = "data:image/png;base64," + encoded_string
     html = "<img src='#{src}' alt=''></img>"

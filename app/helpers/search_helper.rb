@@ -3,12 +3,15 @@ module SearchHelper
   def addManifestFilterOptions
     manifests = MultispectralSample.get_manifests
     html = '<fieldset>'
-    html += "<label style='padding-left:20px'><input type='checkbox' name='manifests' id='toggle_manifests' class='toggle_manifests'/>Select/Unselect all Manuscripts </label>"
+    html += "<label style='padding-left:20px'><input type='checkbox' name='manifests' id='toggle_manifests' class='toggle_manifests'/>Select/Unselect all Manuscripts </label><br>"
     i = 0;
     manifests.each do |manifest|
-      i+= 1
-      name = 'manifest_' + i.to_s
-      html += "<label style='padding-left:20px'><input type='checkbox' name='#{name}' id='#{name}' value='#{manifest[:manifest]}' />#{manifest[:label]} </label>"
+      p "manifest[:manifest] = #{manifest[:label]}"
+      if (!manifest[:label].nil?)
+        i+= 1
+        name = 'manifest_' + i.to_s
+        html += "<label style='padding-left:20px'><input type='checkbox' name='#{name}' id='#{name}' value='#{manifest[:manifest]}' />#{manifest[:label]} </label><br>"
+      end
     end
     html += '</fieldset>'
     html.html_safe
