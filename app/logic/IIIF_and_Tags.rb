@@ -8,10 +8,10 @@ module IIIF_and_Tags
     # lookup canvas_id via filename_canvas_lookup
     fileName = exrFileName.gsub!('.exr', '')
     canvasLookup = CanvasLookup.where("object_file_id LIKE ?", "#{fileName}%").first
-    #if canvasLookup.nil?
-    #  results = ""
-    #  return
-    #end
+    if canvasLookup.nil? || canvasLookup.empty?
+      results = ""
+      return
+    end
     canvas_id = canvasLookup.canvas_id
     # get canvas JSON via IIIF API in order to get the manifest url
     @canvasUrl = SolrConnectConfig.get("canvasUrl") + canvas_id
@@ -33,6 +33,9 @@ module IIIF_and_Tags
     #h = 400 if h==0
     # get canvas JSON via IIIF API in order to get the canvas_id
     @canvasUrl = SolrConnectConfig.get("canvasUrl") + canvas_id
+    if @canvasUrl.nil? || @canvasUrl.empty?
+      return
+    end
     jsonCanvas = JSON.parse(open(@canvasUrl).read)
     imageUrl = jsonCanvas['images'][0]['resource']['default']['service']['@id'].to_s
     imageUrl += x.to_s + ','+ y.to_s + ','+ w.to_s + ','+ h.to_s
